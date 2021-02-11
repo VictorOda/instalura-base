@@ -1,7 +1,7 @@
-import { loadGetInitialProps } from 'next/dist/next-server/lib/utils'
 import React from 'react'
 import { MenuWrapper } from './styles/MenuWrapper'
 import { Logo } from '../../../theme/Logo'
+import { Button } from '../Button'
 
 export default function Menu() {
     const links =[
@@ -28,7 +28,7 @@ export default function Menu() {
           {
             links.map((link) => {
                 return (
-                    <li>
+                    <li key={link.url}>
                         <a href={link.url}>
                             {link.text}
                         </a>
@@ -38,12 +38,12 @@ export default function Menu() {
           }
         </MenuWrapper.CentralSide>
         <MenuWrapper.RightSide>
-          <button>
+          <Button ghost variant="secondary.main">
               Entrar
-          </button>
-          <button>
+          </Button>
+          <Button variant="primary.main">
               Cadastrar
-          </button>
+          </Button>
         </MenuWrapper.RightSide>
       </MenuWrapper>
     )
