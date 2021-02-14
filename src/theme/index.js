@@ -1,4 +1,4 @@
-import { typographyVariants } from './typographyVariants'
+import { typographyVariants } from './typographyVariants';
 
 const colors = {
   background: {
@@ -40,7 +40,7 @@ const colors = {
     dark: {},
   },
 };
-  
+
 export default {
   colors,
   typographyVariants,
@@ -54,4 +54,4 @@ export default {
   borderRadius: '12px',
   transition: '200ms ease-in-out',
   fontFamily: '\'Rubik\', sans-serif',
-}; 
+};
