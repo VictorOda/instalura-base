@@ -3,6 +3,7 @@ import { MenuWrapper } from './styles/MenuWrapper';
 import { Logo } from '../../../theme/Logo';
 import { Button } from '../Button';
 import Text from '../../foundation/Text';
+import theme from '../../../theme';
 
 export default function Menu() {
   const links = [
@@ -19,7 +20,13 @@ export default function Menu() {
       url: '/sobre',
     },
   ];
-
+  const toggleDarkMode = () => {
+    if (theme.mode === 'dark') {
+      theme.mode = 'main';
+    } else {
+      theme.mode = 'dark';
+    }
+  };
   return (
     <MenuWrapper>
       <MenuWrapper.LeftSide>
@@ -37,10 +44,13 @@ export default function Menu() {
           }
       </MenuWrapper.CentralSide>
       <MenuWrapper.RightSide>
-        <Button ghost variant="secondary.main">
+        <Button ghost variant="secondary" onClick={toggleDarkMode}>
+          Mode
+        </Button>
+        <Button ghost variant="secondary">
           Entrar
         </Button>
-        <Button variant="primary.main">
+        <Button variant="primary">
           Cadastrar
         </Button>
       </MenuWrapper.RightSide>

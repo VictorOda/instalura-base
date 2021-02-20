@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import get from 'lodash/get';
 import { propToStyle } from '../../../../theme/utils/propToStyle';
 
 export const Box = styled.div`
@@ -10,4 +11,5 @@ export const Box = styled.div`
   ${propToStyle('backgroundImage')}
   ${propToStyle('backgroundRepeat')}
   ${propToStyle('backgroundPosition')}
+  background-color: ${(props) => get(props.theme, `colors.background.${props.theme.mode}.color`)};
 `;

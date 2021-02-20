@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import get from 'lodash/get';
 
 const FooterWrapper = styled.footer`
   padding: 14px;
@@ -12,9 +13,15 @@ const FooterWrapper = styled.footer`
   img {
     width: 58px;
     margin-right: 23px;
+    color: red;
   }
+
+  p {
+    color: ${({ theme }) => get(theme, `colors.tertiaryLight.${theme.mode}.contrastText`)};
+  }
+
   a {
-    color: ${({ theme }) => theme.colors.primary.main.color};
+    color: ${({ theme }) => get(theme, `colors.tertiaryMain.${theme.mode}.contrastText`)};
     text-decoration: none;
     transition: .3s;
     &:hover,

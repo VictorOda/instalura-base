@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import get from 'lodash/get';
 import { breakpointsMedia } from '../../../../theme/utils/breakpointsMedia';
 import { propToStyle } from '../../../../theme/utils/propToStyle';
 
@@ -37,6 +38,14 @@ const Row = styled.div`
     flex-wrap: wrap;
     margin-right: -16px;
     margin-left: -16px;
+
+    h1 {
+      color: ${(props) => get(props.theme, `colors.tertiaryMain.${props.theme.mode}.contrastText`)};
+    }
+
+    p {
+      color: ${(props) => get(props.theme, `colors.tertiaryLight.${props.theme.mode}.contrastText`)};
+    }
 `;
 
 const Col = styled.div`

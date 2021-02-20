@@ -5,12 +5,12 @@ import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
 import { propToStyle } from '../../../theme/utils/propToStyle';
 
 const ButtonGhost = css`
-    color: ${(props) => get(props.theme, `colors.${props.variant}.color`)};
+    color: ${(props) => get(props.theme, `colors.${props.variant}.${props.theme.mode}.color`)};
     background: transparent;
 `;
 const ButtonDefault = css`
-    color: ${(props) => get(props.theme, `colors.${props.variant}.contrastText`)};
-    background-color: ${(props) => get(props.theme, `colors.${props.variant}.color`)};
+    color: ${(props) => get(props.theme, `colors.${props.variant}.${props.theme.mode}.contrastText`)};
+    background-color: ${(props) => get(props.theme, `colors.${props.variant}.${props.theme.mode}.color`)};
 `;
 
 export const Button = styled.button`

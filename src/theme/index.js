@@ -1,17 +1,24 @@
+import { useState } from 'react';
 import { typographyVariants } from './typographyVariants';
 
 const colors = {
   background: {
     light: {
-      color: '#FFFFFF',
+      color: '#F2F2F2',
     },
     main: {
-      color: '#F2F2F2',
+      color: '#FFFFFF',
+    },
+    dark: {
+      color: '#030506',
     },
   },
   borders: {
     main: {
-      color: '#F1F1F1',
+      color: '#F2F2F2',
+    },
+    dark: {
+      color: '#181F22',
     },
   },
   primary: {
@@ -19,21 +26,37 @@ const colors = {
       color: '#D7385E',
       contrastText: '#fff',
     },
+    dark: {
+      color: '#D7385E',
+      contrastText: '#fff',
+    },
   },
   secondary: {
     main: {
       color: '#FB7B6B',
+    },
+    dark: {
+      color: '#FFA59A',
+    },
+  },
+  tertiaryMain: {
+    main: {
+      color: '#070C0E',
+      contrastText: '#070C0E',
+    },
+    dark: {
+      color: '#FFA59A',
       contrastText: '#fff',
     },
   },
-  tertiary: {
+  tertiaryLight: {
     main: {
-      color: '#070C0E',
-      contrastText: '#fff',
-    },
-    light: {
       color: '#88989E',
-      contrastText: '#fff',
+      contrastText: '#88989E',
+    },
+    dark: {
+      color: '#fff',
+      contrastText: '#D4D4D4',
     },
   },
   modes: {
@@ -54,4 +77,5 @@ export default {
   borderRadius: '12px',
   transition: '200ms ease-in-out',
   fontFamily: '\'Rubik\', sans-serif',
+  mode: 'main',
 };

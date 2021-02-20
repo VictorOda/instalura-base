@@ -38,7 +38,7 @@ export default function Home() {
             <Text
               variant="title"
               tag="h1"
-              color="tertiary.main"
+              color="tertiaryMain"
               textAlign={{
                 xs: 'center',
                 md: 'left',
@@ -49,7 +49,7 @@ export default function Home() {
             <Text
               variant="paragraph1"
               tag="p"
-              color="tertiary.light"
+              color="tertiaryLight"
               textAlign={{
                 xs: 'center',
                 md: 'left',
@@ -60,7 +60,7 @@ export default function Home() {
             </Text>
 
             <Button
-              variant="primary.main"
+              variant="primary"
               margin={{
                 xs: 'auto',
                 md: 'initial',

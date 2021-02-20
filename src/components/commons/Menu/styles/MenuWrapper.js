@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import get from 'lodash/get';
 import { breakpointsMedia } from '../../../../theme/utils/breakpointsMedia';
 import { TextStyleVariantsMap } from '../../../foundation/Text';
 
@@ -58,8 +59,8 @@ MenuWrapper.CentralSide = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-top: 17px;
-  border-top: 1px solid #88989E;
-  border-bottom: 1px solid #88989E;
+  border-top: 1px solid ${(props) => get(props.theme, `colors.borders.${props.theme.mode}.color`)};
+  border-bottom: 1px solid ${(props) => get(props.theme, `colors.borders.${props.theme.mode}.color`)};
   padding: 12px;
   
   ${breakpointsMedia({
@@ -78,7 +79,7 @@ MenuWrapper.CentralSide = styled.div`
     text-align: center;
     display: block;
     text-decoration: none;
-    color: #88989E;
+    color: ${(props) => get(props.theme, `colors.tertiaryLight.${props.theme.mode}.color`)};
     transition: 200ms ease-in-out;
     ${breakpointsMedia({
     xs: css`
@@ -91,7 +92,7 @@ MenuWrapper.CentralSide = styled.div`
     &:hover,
     &:focus {
       font-weight: 500;
-      color: #070C0E;
+      color: ${(props) => get(props.theme, `colors.tertiaryMain.${props.theme.mode}.color`)};
       
     }
   }
