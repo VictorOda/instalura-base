@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { MenuWrapper } from './styles/MenuWrapper';
-import { Logo } from '../../../theme/Logo';
+import { LogoMain } from '../../../theme/LogoMain';
+import { LogoDark } from '../../../theme/LogoDark';
 import { Button } from '../Button';
 import Text from '../../foundation/Text';
 
-export default function Menu({ toggleMode }) {
+export default function Menu({ mode, toggleMode }) {
   const links = [
     {
       text: 'Home',
@@ -24,7 +25,7 @@ export default function Menu({ toggleMode }) {
   return (
     <MenuWrapper>
       <MenuWrapper.LeftSide>
-        <Logo />
+        {mode === 'main' ? <LogoMain /> : <LogoDark />}
       </MenuWrapper.LeftSide>
       <MenuWrapper.CentralSide>
         {
@@ -53,5 +54,6 @@ export default function Menu({ toggleMode }) {
 }
 
 Menu.propTypes = {
+  mode: PropTypes.string.isRequired,
   toggleMode: PropTypes.func.isRequired,
 };

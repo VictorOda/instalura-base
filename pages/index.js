@@ -20,7 +20,7 @@ export default function Home() {
       backgroundRepeat="no-repeat"
       backgroundPosition="bottom right"
     >
-      <Menu toggleMode={toggleMode} />
+      <Menu mode={mode} toggleMode={toggleMode} />
 
       <Grid.Container
         marginTop={{
