@@ -8,7 +8,7 @@ import { Box } from '../src/components/foundation/layout/Box';
 import { useDarkMode } from '../src/theme/utils/themeMode';
 
 export default function Home() {
-  const [toggleMode] = useDarkMode();
+  const [mode, toggleMode] = useDarkMode();
   return (
     <Box
       flex={1}
@@ -16,7 +16,7 @@ export default function Home() {
       flexWrap="wrap"
       flexDirection="column"
       justifyContent="space-between"
-      backgroundImage="url(/images/bubbles.svg)"
+      backgroundImage={mode === 'main' ? 'url(/images/bubblesMain.svg)' : 'url(/images/bubblesDark.svg)'}
       backgroundRepeat="no-repeat"
       backgroundPosition="bottom right"
     >
