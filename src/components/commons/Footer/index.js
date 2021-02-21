@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import get from 'lodash/get';
 
@@ -31,12 +32,12 @@ const FooterWrapper = styled.footer`
   }
 `;
 
-export default function Footer(props) {
+export default function Footer({ mode }, props) {
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <FooterWrapper {...props}>
       <a href="https://www.alura.com.br/">
-        <img src="https://www.alura.com.br/assets/img/alura-logo.svg" alt="Logo Alura" />
+        <img src={mode === 'main' ? '/images/aluraMain.svg' : '/images/aluraDark.svg'} alt="Logo Alura" />
       </a>
       <p>
         Orgulhosamente criado durante
@@ -50,3 +51,7 @@ export default function Footer(props) {
     </FooterWrapper>
   );
 }
+
+Footer.propTypes = {
+  mode: PropTypes.string.isRequired,
+};

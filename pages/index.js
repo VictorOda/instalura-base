@@ -83,7 +83,7 @@ export default function Home() {
           </Grid.Col>
         </Grid.Row>
       </Grid.Container>
-      <Footer />
+      <Footer mode={mode} />
     </Box>
   );
 }
