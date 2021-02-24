@@ -39,6 +39,11 @@ const Row = styled.div`
     margin-right: -16px;
     margin-left: -16px;
 
+    ${propToStyle('flex')}
+    ${propToStyle('marginLeft')}
+    ${propToStyle('marginRight')}
+    ${propToStyle('justifyContent')}
+
     h1 {
       color: ${(props) => get(props.theme, `colors.tertiaryMain.${props.theme.mode}.contrastText`)};
     }
@@ -135,6 +140,7 @@ const Col = styled.div`
   ${propToStyle('alignItemes')}
   ${propToStyle('justifyContent')}
   ${propToStyle('flexDirection')}
+  ${propToStyle('paddingRight')}
 `;
 
 Col.defaultProps = {
