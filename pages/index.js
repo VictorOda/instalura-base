@@ -28,7 +28,7 @@ export default function Home() {
         {(props) => (
           // eslint-disable-next-line react/jsx-props-no-spreading
           <Box backgroundColor="white" data-modal-safe-area="true" {...props}>
-            Nosso conteúdo aqui!
+            Nosso conteúdo aqui! olha isso que doideira
           </Box>
         )}
       </Modal>
