@@ -9,6 +9,7 @@ export const Box = styled.div`
   ${propToStyle('flex')}
   ${propToStyle('flexWrap')}
   ${propToStyle('backgroundImage')}
+  ${propToStyle('backgroundColor')}
   ${propToStyle('backgroundRepeat')}
   ${propToStyle('backgroundPosition')}
   background-color: ${(props) => get(props.theme, `colors.background.${props.theme.mode}.color`)};
