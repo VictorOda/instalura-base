@@ -7,6 +7,7 @@ import { Button } from '../src/components/commons/Button';
 import { Grid } from '../src/components/foundation/layout/Grid';
 import { Box } from '../src/components/foundation/layout/Box';
 import { useDarkMode } from '../src/theme/utils/themeMode';
+import FormCadastro from '../src/components/foundation/FormCadastro';
 
 export default function Home() {
   const [mode, toggleMode] = useDarkMode();
@@ -25,11 +26,8 @@ export default function Home() {
     >
       {/* {isModalOpen && <Modal isOpen={isModalOpen} onClose={() => setModalState(false)} />} */}
       <Modal isOpen={isModalOpen} onClose={() => setModalState(false)}>
-        {(props) => (
-          // eslint-disable-next-line react/jsx-props-no-spreading
-          <Box backgroundColor="white" data-modal-safe-area="true" {...props}>
-            Nosso conteúdo aqui! olha isso que doideira
-          </Box>
+        {(propsDoModal) => (
+          <FormCadastro propsDoModal={propsDoModal} />
         )}
       </Modal>
 
