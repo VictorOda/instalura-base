@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { typographyVariants } from './typographyVariants';
 
 const colors = {
