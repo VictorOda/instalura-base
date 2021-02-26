@@ -28,5 +28,7 @@ jobs:
       - name: Node Version
         run: node -v
         
+      - name: Install dependencies
+        run: npm install
       - name: Run linter!
         run: npm run lint
