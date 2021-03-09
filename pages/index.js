@@ -31,7 +31,7 @@ export default function Home() {
         )}
       </Modal>
 
-      <Menu mode={mode} toggleMode={toggleMode} />
+      <Menu mode={mode} toggleMode={toggleMode} onCadastrarClick={() => setModalState(true)} />
 
       <Grid.Container
         marginTop={{

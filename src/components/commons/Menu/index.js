@@ -6,7 +6,7 @@ import { LogoDark } from '../../../theme/LogoDark';
 import { Button } from '../Button';
 import Text from '../../foundation/Text';
 
-export default function Menu({ mode, toggleMode }) {
+export default function Menu({ mode, toggleMode, onCadastrarClick }) {
   const links = [
     {
       text: 'Home',
@@ -42,10 +42,10 @@ export default function Menu({ mode, toggleMode }) {
         <Button ghost variant="secondary" onClick={toggleMode}>
           Mode
         </Button>
-        <Button ghost variant="secondary">
+        <Button ghost variant="secondary" href="/app/login">
           Entrar
         </Button>
-        <Button variant="primary">
+        <Button variant="primary" onClick={onCadastrarClick}>
           Cadastrar
         </Button>
       </MenuWrapper.RightSide>
@@ -56,4 +56,5 @@ export default function Menu({ mode, toggleMode }) {
 Menu.propTypes = {
   mode: PropTypes.string.isRequired,
   toggleMode: PropTypes.func.isRequired,
+  onCadastrarClick: PropTypes.func.isRequired,
 };
