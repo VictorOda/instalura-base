@@ -7,7 +7,7 @@ import { Button } from '../src/components/commons/Button';
 import { Grid } from '../src/components/foundation/layout/Grid';
 import { Box } from '../src/components/foundation/layout/Box';
 import { useDarkMode } from '../src/theme/utils/themeMode';
-import FormCadastro from '../src/components/foundation/FormCadastro';
+import FormCadastro from '../src/components/patterns/FormCadastro';
 
 export default function Home() {
   const [mode, toggleMode] = useDarkMode();

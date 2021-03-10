@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Lottie } from '@crello/react-lottie';
 import { Button } from '../../commons/Button';
 import TextField from '../../forms/TextField';
-import { Box } from '../layout/Box';
-import { Grid } from '../layout/Grid';
-import Text from '../Text';
+import { Box } from '../../foundation/layout/Box';
+import { Grid } from '../../foundation/layout/Grid';
+import Text from '../../foundation/Text';
 import successAnim from '../../../lotties/success-alert.json';
 import errorAnim from '../../../lotties/error-alert.json';
 
