@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
 import Text from '../../foundation/Text';
+import { propToStyle } from '../../../theme/utils/propToStyle';
 
 const InputWrapper = styled.div`
   margin-bottom: 17px;
@@ -26,6 +27,7 @@ export default function TextField({
   name,
   onChange,
   value,
+  ...props
 }) {
   return (
     <InputWrapper>
@@ -35,6 +37,8 @@ export default function TextField({
         name={name}
         onChange={onChange}
         value={value}
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        {...props}
       />
     </InputWrapper>
   );
