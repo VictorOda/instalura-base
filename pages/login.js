@@ -1,13 +1,13 @@
 import React from 'react';
-import { Button } from '../../src/components/commons/Button';
-import Link from '../../src/components/commons/Link';
-import TextField from '../../src/components/forms/TextField';
-import { Box } from '../../src/components/foundation/layout/Box';
-import { Grid } from '../../src/components/foundation/layout/Grid';
-import Text from '../../src/components/foundation/Text';
-import { WebsitePageContext } from '../../src/components/wrappers/WebsitePage';
-import websitePageHOC from '../../src/components/wrappers/WebsitePage/hoc';
-import { LogoMain } from '../../src/theme/LogoMain';
+import { Button } from '../src/components/commons/Button';
+import Link from '../src/components/commons/Link';
+import TextField from '../src/components/forms/TextField';
+import { Box } from '../src/components/foundation/layout/Box';
+import { Grid } from '../src/components/foundation/layout/Grid';
+import Text from '../src/components/foundation/Text';
+import { WebsitePageContext } from '../src/components/wrappers/WebsitePage';
+import websitePageHOC from '../src/components/wrappers/WebsitePage/hoc';
+import { LogoMain } from '../src/theme/LogoMain';
 
 function LoginForm() {
   return (
