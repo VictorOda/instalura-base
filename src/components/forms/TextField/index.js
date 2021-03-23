@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
 import Text from '../../foundation/Text';
-import { propToStyle } from '../../../theme/utils/propToStyle';
 
 const InputWrapper = styled.div`
   margin-bottom: 17px;
