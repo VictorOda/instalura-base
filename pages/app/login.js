@@ -1,12 +1,12 @@
 import React from 'react';
-import Link from '../src/components/commons/Link';
-import { Box } from '../src/components/foundation/layout/Box';
-import { Grid } from '../src/components/foundation/layout/Grid';
-import Text from '../src/components/foundation/Text';
-import { WebsitePageContext } from '../src/components/wrappers/WebsitePage';
-import websitePageHOC from '../src/components/wrappers/WebsitePage/hoc';
-import { LogoMain } from '../src/theme/LogoMain';
-import LoginForm from '../src/components/patterns/FormLogin';
+import Link from '../../src/components/commons/Link';
+import { Box } from '../../src/components/foundation/layout/Box';
+import { Grid } from '../../src/components/foundation/layout/Grid';
+import Text from '../../src/components/foundation/Text';
+import { WebsitePageContext } from '../../src/components/wrappers/WebsitePage';
+import websitePageHOC from '../../src/components/wrappers/WebsitePage/hoc';
+import { LogoMain } from '../../src/theme/LogoMain';
+import LoginForm from '../../src/components/patterns/FormLogin';
 
 // Essa página e desafio, e vamos dar pronto no próximo módulo o 04
 function LoginScreen() {
