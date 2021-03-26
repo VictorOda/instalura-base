@@ -1,6 +1,6 @@
 import React from 'react';
-import { render, screen } from '../../../infra/tests/testUtils';
 import user from '@testing-library/user-event';
+import { render, screen } from '../../../infra/tests/testUtils';
 import TextField from './index';
 
 describe('<TextField />', () => {

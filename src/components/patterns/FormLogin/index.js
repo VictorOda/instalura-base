@@ -17,7 +17,7 @@ const loginSchema = yup.object().shape({
     .min(8, 'Você precisa fornecer pelo menos 8 caracteres'),
 });
 
-export default function LoginForm() {
+export default function LoginForm({ onSubmit }) {
   const router = useRouter();
   const initialValues = {
     usuario: '',
@@ -50,7 +50,7 @@ export default function LoginForm() {
   });
 
   return (
-    <form id="formCadastro" onSubmit={form.handleSubmit}>
+    <form id="formCadastro" onSubmit={onSubmit || form.handleSubmit}>
       <TextField
         placeholder="Usuário"
         name="usuario"
