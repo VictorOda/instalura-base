@@ -1,23 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import * as yup from 'yup';
 import { Button } from '../../commons/Button';
 import TextField from '../../forms/TextField';
-import useForm from '../../../infra/hooks/form/useForm';
+import { useForm } from '../../../infra/hooks/form/useForm';
 import { loginService } from '../../../services/login/loginService';
 
 const loginSchema = yup.object().shape({
   usuario: yup
     .string()
-    .required('"Usuário" é obrigatório')
+    .required('"Usuario" é obrigatório')
     .min(3, 'Preencha ao menos 3 caracteres'),
   senha: yup
     .string()
     .required('"Senha" é obrigatória')
-    .min(8, 'Você precisa fornecer pelo menos 8 caracteres'),
+    .min(8, 'Sua senha precisa ter ao menos 8 caracteres'),
 });
 
-// eslint-disable-next-line react/prop-types
 export default function LoginForm({ onSubmit }) {
   const router = useRouter();
   const initialValues = {
@@ -30,13 +30,14 @@ export default function LoginForm({ onSubmit }) {
     onSubmit: (values) => {
       form.setIsFormDisabled(true);
       loginService.login({
-        username: values.usuario,
-        password: values.senha,
+        username: values.usuario, // 'omariosouto'
+        password: values.senha, // 'senhasegura'
       })
         .then(() => {
           router.push('/app/profile');
         })
         .catch((err) => {
+          // Desafio: Mostrar o erro na tela
           console.error(err);
         })
         .finally(() => {
@@ -55,35 +56,43 @@ export default function LoginForm({ onSubmit }) {
       <TextField
         placeholder="Usuário"
         name="usuario"
-        onChange={form.handleChange}
         value={form.values.usuario}
         error={form.errors.usuario}
         isTouched={form.touched.usuario}
+        onChange={form.handleChange}
         onBlur={form.handleBlur}
       />
       <TextField
         placeholder="Senha"
         name="senha"
         type="password"
-        onChange={form.handleChange}
         value={form.values.senha}
         error={form.errors.senha}
         isTouched={form.touched.senha}
+        onChange={form.handleChange}
         onBlur={form.handleBlur}
       />
 
       <Button
         type="submit"
-        variant="primary"
+        variant="primary.main"
         margin={{
           xs: '0 auto',
           md: 'initial',
         }}
-        disabled={form.isFormDisabled}
         fullWidth
+        disabled={form.isFormDisabled}
       >
         Entrar
       </Button>
     </form>
   );
 }
+
+LoginForm.defaultProps = {
+  onSubmit: undefined,
+};
+
+LoginForm.propTypes = {
+  onSubmit: PropTypes.func,
+};

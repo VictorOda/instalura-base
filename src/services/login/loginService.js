@@ -1,4 +1,4 @@
-import { setCookie } from 'nookies';
+import { setCookie, destroyCookie } from 'nookies';
 import { isStagingEnv } from '../../infra/env/isStagingEnv';
 
 async function HttpClient(url, { headers, body, ...options }) {
@@ -10,46 +10,52 @@ async function HttpClient(url, { headers, body, ...options }) {
     body: JSON.stringify(body),
     ...options,
   })
-    .then((respostaDoServidor) => {
-      if (respostaDoServidor.ok) {
-        return respostaDoServidor.json();
+    .then((respostaDoServer) => {
+      if (respostaDoServer.ok) {
+        return respostaDoServer.json();
       }
 
-      throw new Error('Falha em pegar os dados do servidor');
+      throw new Error('Falha em pegar os dados do servidor :(');
     });
 }
 
-const isStaging = isStagingEnv;
-const BASE_URL = isStaging
+const BASE_URL = isStagingEnv
+  // Back End de DEV
   ? 'https://instalura-api-git-master.omariosouto.vercel.app'
-  : 'https://instalura-api.omariosouto.vercel.app/api/login';
+  // Back End de PROD
+  : 'https://instalura-api.omariosouto.vercel.app';
 
 export const loginService = {
-  async login({ username, password }) {
-    return HttpClient(`${BASE_URL}/api/login`, {
+  async login(
+    { username, password },
+    setCookieModule = setCookie,
+    HttpClientModule = HttpClient,
+  ) {
+    return HttpClientModule(`${BASE_URL}/api/login`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+      body: {
+        username, // 'omariosouto'
+        password, // 'senhasegura'
       },
-      body: JSON.stringify({
-        username,
-        password,
-      }),
     })
       .then((respostaConvertida) => {
         const { token } = respostaConvertida.data;
+        const hasToken = token;
+        if (!hasToken) {
+          throw new Error('Failed to login');
+        }
         const DAY_IN_SECONDS = 86400;
-
         // Salvar o Token
-        setCookie(null, 'APP_TOKEN', token, {
+        setCookieModule(null, 'APP_TOKEN', token, {
           path: '/',
           maxAge: DAY_IN_SECONDS * 7,
         });
-
-        // Escrever os testes
         return {
           token,
         };
       });
+  },
+  async logout(destroyCookieModule = destroyCookie) {
+    destroyCookieModule(null, 'APP_TOKEN');
   },
 };
