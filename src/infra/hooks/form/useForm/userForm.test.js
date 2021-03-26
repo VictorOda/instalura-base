@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react-hooks';
-import useForm from './index';
+import { useForm } from './index';
 
 describe('useForm()', () => {
   describe('when user types', () => {
