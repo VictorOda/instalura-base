@@ -17,6 +17,7 @@ const loginSchema = yup.object().shape({
     .min(8, 'Você precisa fornecer pelo menos 8 caracteres'),
 });
 
+// eslint-disable-next-line react/prop-types
 export default function LoginForm({ onSubmit }) {
   const router = useRouter();
   const initialValues = {
