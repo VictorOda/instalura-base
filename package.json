@@ -11,7 +11,9 @@
     "test:integration:open": "cypress open",
     "test:integration": "cypress run --headless",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "test:integration:build": "start-server-and-test build/start http-get://localhost:3000 test:integration",
+    "build/start": "npm run build && npm run start"
   },
   "dependencies": {
     "@crello/react-lottie": "0.0.11",
@@ -34,6 +36,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-is": "^16.8.0",
+    "start-server-and-test": "^1.12.1",
     "styled-components": "^5.0.0",
     "styled-normalize": "^8.0.7",
     "yup": "^0.32.9"
