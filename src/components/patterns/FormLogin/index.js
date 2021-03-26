@@ -17,7 +17,8 @@ const loginSchema = yup.object().shape({
     .min(8, 'Você precisa fornecer pelo menos 8 caracteres'),
 });
 
-export default function LoginForm() {
+// eslint-disable-next-line react/prop-types
+export default function LoginForm({ onSubmit }) {
   const router = useRouter();
   const initialValues = {
     usuario: '',
@@ -27,12 +28,19 @@ export default function LoginForm() {
   const form = useForm({
     initialValues,
     onSubmit: (values) => {
+      form.setIsFormDisabled(true);
       loginService.login({
         username: values.usuario,
         password: values.senha,
       })
         .then(() => {
           router.push('/app/profile');
+        })
+        .catch((err) => {
+          console.error(err);
+        })
+        .finally(() => {
+          form.setIsFormDisabled(false);
         });
     },
     async validateSchema(values) {
@@ -43,7 +51,7 @@ export default function LoginForm() {
   });
 
   return (
-    <form id="formCadastro" onSubmit={form.handleSubmit}>
+    <form id="formCadastro" onSubmit={onSubmit || form.handleSubmit}>
       <TextField
         placeholder="Usuário"
         name="usuario"
