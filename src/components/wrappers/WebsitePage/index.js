@@ -36,7 +36,8 @@ export default function WebsitePageWrapper({
         flexWrap="wrap"
         flexDirection="column"
         justifyContent="space-between"
-        backgroundImage={mode === 'main' ? 'url(/images/bubblesMain.svg)' : 'url(/images/bubblesDark.svg)'}
+        // eslint-disable-next-line no-nested-ternary
+        backgroundImage={pageBoxProps.backgroundRepeat ? mode === 'main' ? 'url(/images/bubblesMain.svg)' : 'url(/images/bubblesDark.svg)' : ''}
         {...pageBoxProps}
       >
         <Modal isOpen={isModalOpen} onClose={() => setModalState(false)}>
