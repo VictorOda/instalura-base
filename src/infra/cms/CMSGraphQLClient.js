@@ -5,7 +5,7 @@ export const gql = GraphQLTag;
 export function CMSGraphQLClient() {
   const DatoCMSURL = 'https://graphql.datocms.com/';
   const TOKEN = process.env.DATO_CMS_TOKEN;
-  console.log('TOKEN: ', TOKEN);
+
   const client = new GraphQLClient(DatoCMSURL, {
     headers: {
       Authorization: `Bearer ${TOKEN}`,

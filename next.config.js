@@ -18,4 +18,7 @@ module.exports = {
       },
     ];
   },
+  env: {
+    DATO_CMS_TOKEN: 'f3b10acbcde7199b218bec4518b074',
+  },
 };
