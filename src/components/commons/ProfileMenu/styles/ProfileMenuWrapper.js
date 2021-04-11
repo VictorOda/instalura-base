@@ -29,7 +29,6 @@ export const MenuWrapper = styled.nav`
     `,
     md: css`
       border-radius: 0;
-      position: fixed;
       top: 0;
       bottom: auto;
       left: 0;

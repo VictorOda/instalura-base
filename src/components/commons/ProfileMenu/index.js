@@ -27,7 +27,7 @@ const SearchBar = styled.input`
   outline: none;
 `;
 
-export default function ProfileMenu({ mode, toggleMode, onCadastrarClick }) {
+export default function ProfileMenu({ mode }) {
   return (
     <MenuWrapper>
       <MenuWrapper.LeftSide>
@@ -74,6 +74,4 @@ export default function ProfileMenu({ mode, toggleMode, onCadastrarClick }) {
 
 ProfileMenu.propTypes = {
   mode: PropTypes.string.isRequired,
-  toggleMode: PropTypes.func.isRequired,
-  onCadastrarClick: PropTypes.func.isRequired,
 };
