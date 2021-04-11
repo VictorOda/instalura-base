@@ -20,6 +20,16 @@ const colors = {
       color: '#181F22',
     },
   },
+  icons: {
+    main: {
+      color: '#000000',
+      highlight: '#D7385E',
+    },
+    dark: {
+      color: '#FFFFFF',
+      highlight: '#D7385E',
+    },
+  },
   primary: {
     main: {
       color: '#D7385E',

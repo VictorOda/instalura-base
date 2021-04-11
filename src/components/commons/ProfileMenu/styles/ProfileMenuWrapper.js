@@ -1,118 +1,92 @@
 import styled, { css } from 'styled-components';
 import get from 'lodash/get';
 import { breakpointsMedia } from '../../../../theme/utils/breakpointsMedia';
-import { TextStyleVariantsMap } from '../../../foundation/Text';
 
 export const MenuWrapper = styled.nav`
   font-family: 'Rubik', sans-serif;
   display: flex;
   position: fixed;
+  top: auto;
   bottom: 0;
   left: 0;
   right: 0;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin-top: 18px; 
-  padding-left: 28px;
-  padding-right: 28px;
-  background-color: ${(props) => get(props.theme, `colors.borders.${props.theme.mode}.color`)};
+  background-color: ${(props) => get(props.theme, `colors.background.${props.theme.mode}.color`)};
+  border-radius: 24px 24px 0px 0px;
+  width: 100%;
 
   ${breakpointsMedia({
-    md: css`
+    sm: css`
       justify-content: flex-start;
-      margin-top: 32px;
       margin-left: auto;
       margin-right: auto;
-      width: 100%;
-      padding: 0 16px;
-      max-width: 768px;
+      
+      box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.0);
+      border-radius: 0;
+      padding: 0px 18px;
     `,
-    lg: css`
-      max-width: 1160px; 
-    `,
-    xl: css`
-      max-width: 1222px;
+    md: css`
+      border-radius: 0;
+      position: fixed;
+      top: 0;
+      bottom: auto;
+      left: 0;
+      right: 0;
+      padding: 4px 28px;
+      box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
     `,
   })}
 `;
 
 MenuWrapper.LeftSide = styled.div`
+  display: none;
   padding: 0;
   margin: 0;
   order: 1;
+
   ${breakpointsMedia({
     md: css`
-        width: 131px;
-        height: 32px;
-      `,
-  })}
-  ${breakpointsMedia({
-    md: css`
+      /* display: inline; */
+      display: inline;
+      width: 131px;
+      height: 32px;
       order: initial;
       padding-right: 16px;
     `,
   })}
 `;
 
-MenuWrapper.CentralSide = styled.div`
-  padding: 0;
-  margin: 0;
-  order: 3;
-  width: 100%;
-  list-style: none;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 17px;
-  border-top: 1px solid ${(props) => get(props.theme, `colors.borders.${props.theme.mode}.color`)};
-  border-bottom: 1px solid ${(props) => get(props.theme, `colors.borders.${props.theme.mode}.color`)};
-  padding: 12px;
-  
-  ${breakpointsMedia({
-    md: css`
-      max-width: 332px;
-      justify-content: space-between;
-      flex: 1;
-      order: initial;
-      border: none;
-      margin: 0;
-      padding-top: 0;
-      padding-bottom: 0;
-    `,
-  })}
-  a {
-    text-align: center;
-    display: block;
-    text-decoration: none;
-    color: ${(props) => get(props.theme, `colors.tertiaryLight.${props.theme.mode}.color`)};
-    transition: 200ms ease-in-out;
-    ${breakpointsMedia({
-    xs: css`
-        ${TextStyleVariantsMap.smallestException}
-    `,
-    md: css`
-      ${TextStyleVariantsMap.paragraph1}
-    `,
-  })}
-    &:hover,
-    &:focus {
-      font-weight: 500;
-      color: ${(props) => get(props.theme, `colors.tertiaryMain.${props.theme.mode}.color`)};
-      
-    }
-  }
-`;
-
 MenuWrapper.RightSide = styled.div`
   padding: 0;
   margin: 0;
-  display: flex;
+  display: none;
   flex: 1;
   order: 2;
   justify-content: flex-end;
   ${breakpointsMedia({
     md: css`
+      display: flex;
+      order: initial;
+      align-items: center;
+      flex: row;
+    `,
+  })}
+`;
+
+MenuWrapper.Mobile = styled.div`
+  margin: 0;
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 64px;
+  height: 64px;
+
+  ${breakpointsMedia({
+    md: css`
+      display: none;
       order: initial;
     `,
   })}

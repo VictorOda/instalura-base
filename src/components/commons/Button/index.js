@@ -52,6 +52,7 @@ const ButtonWrapper = styled.button`
 
   ${propToStyle('margin')}
   ${propToStyle('display')}
+  ${propToStyle('padding')}
 `;
 
 export function Button({ href, children, ...props }) {

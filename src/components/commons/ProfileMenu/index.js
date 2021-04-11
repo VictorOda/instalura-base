@@ -1,54 +1,73 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { get } from 'lodash';
 import { MenuWrapper } from './styles/ProfileMenuWrapper';
 import { LogoMain } from '../../../theme/LogoMain';
 import { LogoDark } from '../../../theme/LogoDark';
 import { Button } from '../Button';
-import Text from '../../foundation/Text';
+
+const Search = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+`;
+
+const SearchIcon = styled.img`
+  position: absolute;
+  left: 12px;
+`;
+
+const SearchBar = styled.input`
+  border: 1px solid ${(props) => get(props.theme, `colors.tertiaryLight.${props.theme.mode}.color`)};
+  border-radius: ${(props) => props.theme.borderRadius};
+  height: 44px;
+  padding-left: 44px;
+  padding-right: 8px;
+  outline: none;
+`;
 
 export default function ProfileMenu({ mode, toggleMode, onCadastrarClick }) {
-  const links = [
-    {
-      text: 'Home',
-      url: '/',
-    },
-    {
-      text: 'Perguntas Frequentes',
-      url: '/faq',
-    },
-    {
-      text: 'Sobre',
-      url: '/sobre',
-    },
-  ];
-
   return (
     <MenuWrapper>
       <MenuWrapper.LeftSide>
         {mode === 'main' ? <LogoMain /> : <LogoDark />}
       </MenuWrapper.LeftSide>
-      <MenuWrapper.CentralSide>
-        {
-            links.map((link) => (
-              <li key={link.url}>
-                <Text tag="a" variant="smallestException" href={link.url}>
-                  {link.text}
-                </Text>
-              </li>
-            ))
-          }
-      </MenuWrapper.CentralSide>
       <MenuWrapper.RightSide>
-        <Button ghost variant="secondary" onClick={toggleMode}>
-          Mode
+        <Search>
+          <SearchIcon src={mode === 'main' ? '/icons/search2.svg' : '/iconsDark/search.svg'} alt="Home Icon" />
+          <SearchBar type="text" placeholder="Pesquisar" />
+        </Search>
+        <Button ghost variant="secondary" padding="0 8px">
+          <img src={mode === 'main' ? '/icons/plus.svg' : '/iconsDark/plus.svg'} alt="Home Icon" />
         </Button>
-        <Button ghost variant="secondary" href="/app/login">
-          Entrar
+        <Button ghost variant="secondary" href="/app/profile" padding="0 8px">
+          <img src={mode === 'main' ? '/icons/home.svg' : '/iconsDark/home.svg'} alt="Home Icon" />
         </Button>
-        <Button variant="primary" onClick={onCadastrarClick}>
-          Cadastrar
+        <Button ghost variant="secondary" href="/app/profile" padding="0 8px">
+          <img src={mode === 'main' ? '/icons/heart.svg' : '/iconsDark/heart.svg'} alt="Home Icon" />
+        </Button>
+        <Button ghost variant="secondary" href="/app/profile" padding="0 8px">
+          PROFILE
         </Button>
       </MenuWrapper.RightSide>
+      <MenuWrapper.Mobile>
+        <Button ghost variant="secondary" href="/app/profile">
+          <img src={mode === 'main' ? '/icons/home.svg' : '/iconsDark/home.svg'} alt="Home Icon" />
+        </Button>
+        <Button ghost variant="secondary">
+          <img src={mode === 'main' ? '/icons/search.svg' : '/iconsDark/search.svg'} alt="Home Icon" />
+        </Button>
+        <Button ghost variant="secondary">
+          <img src={mode === 'main' ? '/icons/plus.svg' : '/iconsDark/plus.svg'} alt="Home Icon" />
+        </Button>
+        <Button ghost variant="secondary" href="/app/profile">
+          <img src={mode === 'main' ? '/icons/heart.svg' : '/iconsDark/heart.svg'} alt="Home Icon" />
+        </Button>
+        <Button ghost variant="secondary" href="/app/profile">
+          PROFILE
+        </Button>
+      </MenuWrapper.Mobile>
     </MenuWrapper>
   );
 }
