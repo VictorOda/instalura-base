@@ -1,8 +1,9 @@
 import React from 'react';
+import websiteProfilePageHOC from '../../src/components/wrappers/WebsiteProfilePage/hoc';
 import { authService } from '../../src/services/auth/authService';
 import { userService } from '../../src/services/user/userService';
 
-export default function ProfilePage(props) {
+function ProfilePage(props) {
   return (
     <div>
       Página de Profile!
@@ -13,6 +14,12 @@ export default function ProfilePage(props) {
     </div>
   );
 }
+
+export default websiteProfilePageHOC(ProfilePage, {
+  pageWrapperProps: {
+    seoProps: { headTitle: 'Profile' },
+  },
+});
 
 export async function getServerSideProps(ctx) {
   const auth = authService(ctx);
