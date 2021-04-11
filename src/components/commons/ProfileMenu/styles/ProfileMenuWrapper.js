@@ -33,8 +33,9 @@ export const MenuWrapper = styled.nav`
       bottom: auto;
       left: 0;
       right: 0;
-      padding: 4px 28px;
+      padding: 0 28px;
       box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+      height: 96px;
     `,
   })}
 `;

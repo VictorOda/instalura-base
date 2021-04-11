@@ -27,7 +27,7 @@ const SearchBar = styled.input`
   outline: none;
 `;
 
-export default function ProfileMenu({ mode }) {
+export default function ProfileMenu({ mode, toggleMode }) {
   return (
     <MenuWrapper>
       <MenuWrapper.LeftSide>
@@ -39,16 +39,19 @@ export default function ProfileMenu({ mode }) {
           <SearchBar type="text" placeholder="Pesquisar" />
         </Search>
         <Button ghost variant="secondary" padding="0 8px">
-          <img src={mode === 'main' ? '/icons/plus.svg' : '/iconsDark/plus.svg'} alt="Home Icon" />
+          <img src="/icons/plus.svg" alt="Plus Icon" />
         </Button>
         <Button ghost variant="secondary" href="/app/profile" padding="0 8px">
           <img src={mode === 'main' ? '/icons/home.svg' : '/iconsDark/home.svg'} alt="Home Icon" />
         </Button>
         <Button ghost variant="secondary" href="/app/profile" padding="0 8px">
-          <img src={mode === 'main' ? '/icons/heart.svg' : '/iconsDark/heart.svg'} alt="Home Icon" />
+          <img src={mode === 'main' ? '/icons/heart.svg' : '/iconsDark/heart.svg'} alt="Heart Icon" />
         </Button>
         <Button ghost variant="secondary" href="/app/profile" padding="0 8px">
           PROFILE
+        </Button>
+        <Button ghost variant="secondary" onClick={toggleMode}>
+          Mode
         </Button>
       </MenuWrapper.RightSide>
       <MenuWrapper.Mobile>
@@ -56,13 +59,13 @@ export default function ProfileMenu({ mode }) {
           <img src={mode === 'main' ? '/icons/home.svg' : '/iconsDark/home.svg'} alt="Home Icon" />
         </Button>
         <Button ghost variant="secondary">
-          <img src={mode === 'main' ? '/icons/search.svg' : '/iconsDark/search.svg'} alt="Home Icon" />
+          <img src={mode === 'main' ? '/icons/search.svg' : '/iconsDark/search.svg'} alt="Search Icon" />
         </Button>
         <Button ghost variant="secondary">
-          <img src={mode === 'main' ? '/icons/plus.svg' : '/iconsDark/plus.svg'} alt="Home Icon" />
+          <img src={mode === 'main' ? '/icons/plus.svg' : '/iconsDark/plus.svg'} alt="Plus Icon" />
         </Button>
         <Button ghost variant="secondary" href="/app/profile">
-          <img src={mode === 'main' ? '/icons/heart.svg' : '/iconsDark/heart.svg'} alt="Home Icon" />
+          <img src={mode === 'main' ? '/icons/heart.svg' : '/iconsDark/heart.svg'} alt="Heart Icon" />
         </Button>
         <Button ghost variant="secondary" href="/app/profile">
           PROFILE
@@ -74,4 +77,5 @@ export default function ProfileMenu({ mode }) {
 
 ProfileMenu.propTypes = {
   mode: PropTypes.string.isRequired,
+  toggleMode: PropTypes.func.isRequired,
 };

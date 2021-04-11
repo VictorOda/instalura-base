@@ -15,7 +15,6 @@ export { WebsiteProfilePageContext } from './context';
 export default function WebsiteProfilePageWrapper({
   children,
   seoProps,
-  pageBoxProps,
   menuProps,
   messages,
 }) {
@@ -37,10 +36,7 @@ export default function WebsiteProfilePageWrapper({
         flexWrap="wrap"
         flexDirection="column"
         justifyContent="space-between"
-        paddingBottom="64px"
-        // eslint-disable-next-line no-nested-ternary
-        backgroundImage={pageBoxProps.backgroundRepeat ? mode === 'main' ? 'url(/images/bubblesMain.svg)' : 'url(/images/bubblesDark.svg)' : ''}
-        {...pageBoxProps}
+        padding="96px 0 64px 0"
       >
         {/* <Modal isOpen={isModalOpen} onClose={() => setModalState(false)}>
           {(propsDoModal) => (
@@ -52,7 +48,6 @@ export default function WebsiteProfilePageWrapper({
           <ProfileMenu
             mode={mode}
             toggleMode={toggleMode}
-            onCadastrarClick={() => setModalState(true)}
           />
         )}
 
