@@ -1,7 +1,13 @@
 import React from 'react';
+import styled from 'styled-components';
 import websiteProfilePageHOC from '../../src/components/wrappers/WebsiteProfilePage/hoc';
 import { authService } from '../../src/services/auth/authService';
 import { userService } from '../../src/services/user/userService';
+
+const Post = styled.img`
+  width: 250px;
+  height: 250px;
+`;
 
 function ProfilePage(props) {
   return (
@@ -10,6 +16,9 @@ function ProfilePage(props) {
       <pre>
         {JSON.stringify(props, null, 4)}
       </pre>
+      <div>
+        {props.posts.map((post) => (<Post src={post.photoUrl} key={post._id} />))}
+      </div>
       <img src="https://media.giphy.com/media/bn0zlGb4LOyo8/giphy.gif" alt="Nicolas Cage" />
     </div>
   );
