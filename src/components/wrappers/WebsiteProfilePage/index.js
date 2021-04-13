@@ -36,7 +36,6 @@ export default function WebsiteProfilePageWrapper({
         flexWrap="wrap"
         flexDirection="column"
         justifyContent="space-between"
-        padding="96px 0 64px 0"
         backgroundColor={mode === 'main' ? '#F2F2F2' : '#030506'}
       >
         {/* <Modal isOpen={isModalOpen} onClose={() => setModalState(false)}>

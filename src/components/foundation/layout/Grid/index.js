@@ -143,7 +143,7 @@ const Col = styled.div`
   }}
 
   ${propToStyle('display')}
-  ${propToStyle('alignItemes')}
+  ${propToStyle('alignItems')}
   ${propToStyle('justifyContent')}
   ${propToStyle('flexDirection')}
   ${propToStyle('paddingRight')}

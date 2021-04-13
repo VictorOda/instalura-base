@@ -55,19 +55,19 @@ export default function ProfileMenu({ mode, toggleMode }) {
         </Button>
       </MenuWrapper.RightSide>
       <MenuWrapper.Mobile>
-        <Button ghost variant="secondary" href="/app/profile">
+        <Button ghost variant="secondary" href="/app/profile" padding="0">
           <img src={mode === 'main' ? '/icons/home.svg' : '/iconsDark/home.svg'} alt="Home Icon" />
         </Button>
-        <Button ghost variant="secondary">
+        <Button ghost variant="secondary" padding="0">
           <img src={mode === 'main' ? '/icons/search.svg' : '/iconsDark/search.svg'} alt="Search Icon" />
         </Button>
-        <Button ghost variant="secondary">
+        <Button ghost variant="secondary" padding="0">
           <img src={mode === 'main' ? '/icons/plus.svg' : '/iconsDark/plus.svg'} alt="Plus Icon" />
         </Button>
-        <Button ghost variant="secondary" href="/app/profile">
+        <Button ghost variant="secondary" href="/app/profile" padding="0">
           <img src={mode === 'main' ? '/icons/heart.svg' : '/iconsDark/heart.svg'} alt="Heart Icon" />
         </Button>
-        <Button ghost variant="secondary" href="/app/profile">
+        <Button ghost variant="secondary" href="/app/profile" padding="0">
           PROFILE
         </Button>
       </MenuWrapper.Mobile>

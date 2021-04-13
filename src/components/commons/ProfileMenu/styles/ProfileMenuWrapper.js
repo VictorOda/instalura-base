@@ -65,6 +65,7 @@ MenuWrapper.RightSide = styled.div`
   flex: 1;
   order: 2;
   justify-content: flex-end;
+
   ${breakpointsMedia({
     md: css`
       display: flex;
@@ -78,11 +79,11 @@ MenuWrapper.RightSide = styled.div`
 MenuWrapper.Mobile = styled.div`
   margin: 0;
   display: flex;
-  flex: 1;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 64px;
+  padding: 0 18px;
   height: 64px;
+  width: 100%;
 
   ${breakpointsMedia({
     md: css`
