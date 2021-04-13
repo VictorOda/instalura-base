@@ -7,6 +7,7 @@ import websiteProfilePageHOC from '../../src/components/wrappers/WebsiteProfileP
 import { authService } from '../../src/services/auth/authService';
 import { userService } from '../../src/services/user/userService';
 import { breakpointsMedia } from '../../src/theme/utils/breakpointsMedia';
+import Text from '../../src/components/foundation/Text';
 
 const ProfileContainer = styled.div`
   width: 90%;
@@ -90,20 +91,68 @@ function ProfilePage({ user, posts }) {
       <InfoContainer>
         <ProfileIcon src={posts[0].photoUrl} alt="Profile Icon" />
         <ProfileInfo>
-          <div>234</div>
-          <div>Publicações</div>
+          <Text
+            variant="subTitle"
+            tag="span"
+            color="tertiaryMain"
+          >
+            234
+          </Text>
+          <Text
+            variant="paragraph1"
+            tag="span"
+            color="tertiaryLight"
+          >
+            Publicações
+          </Text>
         </ProfileInfo>
         <ProfileInfo>
-          <div>22k</div>
-          <div>Seguindo</div>
+          <Text
+            variant="subTitle"
+            tag="span"
+            color="tertiaryMain"
+          >
+            22k
+          </Text>
+          <Text
+            variant="paragraph1"
+            tag="span"
+            color="tertiaryLight"
+          >
+            Seguindo
+          </Text>
         </ProfileInfo>
         <ProfileInfo>
-          <div>134k</div>
-          <div>Seguidores</div>
+          <Text
+            variant="subTitle"
+            tag="span"
+            color="tertiaryMain"
+          >
+            134k
+          </Text>
+          <Text
+            variant="paragraph1"
+            tag="span"
+            color="tertiaryLight"
+          >
+            Seguidores
+          </Text>
         </ProfileInfo>
         <ProfileInfo>
-          <div>Nicolas Cage</div>
-          <div>A whosome person responsible for the best movies ever.</div>
+          <Text
+            variant="subTitle"
+            tag="span"
+            color="tertiaryMain"
+          >
+            {user.username}
+          </Text>
+          <Text
+            variant="paragraph1"
+            tag="span"
+            color="tertiaryLight"
+          >
+            A whosome person responsible for the best movies ever.
+          </Text>
         </ProfileInfo>
       </InfoContainer>
       <GridContainer>
