@@ -30,47 +30,50 @@ const SearchBar = styled.input`
 export default function ProfileMenu({ mode, toggleMode }) {
   return (
     <MenuWrapper>
-      <MenuWrapper.LeftSide>
-        {mode === 'main' ? <LogoMain /> : <LogoDark />}
-      </MenuWrapper.LeftSide>
-      <MenuWrapper.RightSide>
-        <Search>
-          <SearchIcon src={mode === 'main' ? '/icons/search2.svg' : '/iconsDark/search.svg'} alt="Home Icon" />
-          <SearchBar type="text" placeholder="Pesquisar" />
-        </Search>
-        <Button ghost variant="secondary" padding="0 8px">
-          <img src="/icons/plus.svg" alt="Plus Icon" />
-        </Button>
-        <Button ghost variant="secondary" href="/app/profile" padding="0 8px">
-          <img src={mode === 'main' ? '/icons/home.svg' : '/iconsDark/home.svg'} alt="Home Icon" />
-        </Button>
-        <Button ghost variant="secondary" href="/app/profile" padding="0 8px">
-          <img src={mode === 'main' ? '/icons/heart.svg' : '/iconsDark/heart.svg'} alt="Heart Icon" />
-        </Button>
-        <Button ghost variant="secondary" href="/app/profile" padding="0 8px">
-          PROFILE
-        </Button>
-        <Button ghost variant="secondary" onClick={toggleMode}>
-          Mode
-        </Button>
-      </MenuWrapper.RightSide>
-      <MenuWrapper.Mobile>
-        <Button ghost variant="secondary" href="/app/profile" padding="0">
-          <img src={mode === 'main' ? '/icons/home.svg' : '/iconsDark/home.svg'} alt="Home Icon" />
-        </Button>
-        <Button ghost variant="secondary" padding="0">
-          <img src={mode === 'main' ? '/icons/search.svg' : '/iconsDark/search.svg'} alt="Search Icon" />
-        </Button>
-        <Button ghost variant="secondary" padding="0">
-          <img src={mode === 'main' ? '/icons/plus.svg' : '/iconsDark/plus.svg'} alt="Plus Icon" />
-        </Button>
-        <Button ghost variant="secondary" href="/app/profile" padding="0">
-          <img src={mode === 'main' ? '/icons/heart.svg' : '/iconsDark/heart.svg'} alt="Heart Icon" />
-        </Button>
-        <Button ghost variant="secondary" href="/app/profile" padding="0">
-          PROFILE
-        </Button>
-      </MenuWrapper.Mobile>
+      <MenuWrapper.Container>
+        <MenuWrapper.LeftSide>
+          {mode === 'main' ? <LogoMain /> : <LogoDark />}
+        </MenuWrapper.LeftSide>
+        <MenuWrapper.RightSide>
+          <Search>
+            <SearchIcon src={mode === 'main' ? '/icons/search2.svg' : '/iconsDark/search.svg'} alt="Home Icon" />
+            <SearchBar type="text" placeholder="Pesquisar" />
+          </Search>
+          <Button ghost variant="secondary" padding="0 8px">
+            <img src="/icons/plus.svg" alt="Plus Icon" />
+          </Button>
+          <Button ghost variant="secondary" href="/app/profile" padding="0 8px">
+            <img src={mode === 'main' ? '/icons/home.svg' : '/iconsDark/home.svg'} alt="Home Icon" />
+          </Button>
+          <Button ghost variant="secondary" href="/app/profile" padding="0 8px">
+            <img src={mode === 'main' ? '/icons/heart.svg' : '/iconsDark/heart.svg'} alt="Heart Icon" />
+          </Button>
+          <Button ghost variant="secondary" href="/app/profile" padding="0 8px">
+            PROFILE
+          </Button>
+          <Button ghost variant="secondary" onClick={toggleMode}>
+            Mode
+          </Button>
+        </MenuWrapper.RightSide>
+        <MenuWrapper.Mobile>
+          <Button ghost variant="secondary" href="/app/profile" padding="0">
+            <img src={mode === 'main' ? '/icons/home.svg' : '/iconsDark/home.svg'} alt="Home Icon" />
+          </Button>
+          <Button ghost variant="secondary" padding="0">
+            <img src={mode === 'main' ? '/icons/search.svg' : '/iconsDark/search.svg'} alt="Search Icon" />
+          </Button>
+          <Button ghost variant="secondary" padding="0">
+            <img src={mode === 'main' ? '/icons/plus.svg' : '/iconsDark/plus.svg'} alt="Plus Icon" />
+          </Button>
+          <Button ghost variant="secondary" href="/app/profile" padding="0">
+            <img src={mode === 'main' ? '/icons/heart.svg' : '/iconsDark/heart.svg'} alt="Heart Icon" />
+          </Button>
+          <Button ghost variant="secondary" href="/app/profile" padding="0">
+            PROFILE
+          </Button>
+        </MenuWrapper.Mobile>
+      </MenuWrapper.Container>
+      
     </MenuWrapper>
   );
 }

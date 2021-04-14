@@ -4,13 +4,11 @@ import { breakpointsMedia } from '../../../../theme/utils/breakpointsMedia';
 
 export const MenuWrapper = styled.nav`
   font-family: 'Rubik', sans-serif;
-  display: flex;
   position: fixed;
   top: auto;
   bottom: 0;
   left: 0;
   right: 0;
-  align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   background-color: ${(props) => get(props.theme, `colors.background.${props.theme.mode}.color`)};
@@ -33,11 +31,19 @@ export const MenuWrapper = styled.nav`
       bottom: auto;
       left: 0;
       right: 0;
-      padding: 0 28px;
+      padding: 0;
       box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
-      height: 96px;
     `,
   })}
+`;
+
+MenuWrapper.Container = styled.div`
+  width: 90%;
+  max-width: 992px;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  display: flex;
 `;
 
 MenuWrapper.LeftSide = styled.div`
