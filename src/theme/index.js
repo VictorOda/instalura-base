@@ -12,6 +12,14 @@ const colors = {
       color: '#030506',
     },
   },
+  posts: {
+    main: {
+      color: '#FFFFFF',
+    },
+    dark: {
+      color: '#070C0E',
+    },
+  },
   borders: {
     main: {
       color: '#F2F2F2',
