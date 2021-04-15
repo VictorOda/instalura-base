@@ -27,7 +27,7 @@ const SearchBar = styled.input`
   outline: none;
 `;
 
-export default function ProfileMenu({ mode, toggleMode }) {
+export default function ProfileMenu({ mode, toggleMode, onPlusClick }) {
   return (
     <MenuWrapper>
       <MenuWrapper.Container>
@@ -39,7 +39,7 @@ export default function ProfileMenu({ mode, toggleMode }) {
             <SearchIcon src={mode === 'main' ? '/icons/search2.svg' : '/iconsDark/search.svg'} alt="Home Icon" />
             <SearchBar type="text" placeholder="Pesquisar" />
           </Search>
-          <Button ghost variant="secondary" padding="0 8px">
+          <Button ghost variant="secondary" padding="0 8px" onClick={onPlusClick}>
             <img src="/icons/plus.svg" alt="Plus Icon" />
           </Button>
           <Button ghost variant="secondary" href="/app/profile" padding="0 8px">
@@ -62,8 +62,8 @@ export default function ProfileMenu({ mode, toggleMode }) {
           <Button ghost variant="secondary" padding="0">
             <img src={mode === 'main' ? '/icons/search.svg' : '/iconsDark/search.svg'} alt="Search Icon" />
           </Button>
-          <Button ghost variant="secondary" padding="0">
-            <img src={mode === 'main' ? '/icons/plus.svg' : '/iconsDark/plus.svg'} alt="Plus Icon" />
+          <Button ghost variant="secondary" padding="0" onClick={onPlusClick}>
+            <img src="/icons/plus.svg" alt="Plus Icon" />
           </Button>
           <Button ghost variant="secondary" href="/app/profile" padding="0">
             <img src={mode === 'main' ? '/icons/heart.svg' : '/iconsDark/heart.svg'} alt="Heart Icon" />
@@ -73,7 +73,6 @@ export default function ProfileMenu({ mode, toggleMode }) {
           </Button>
         </MenuWrapper.Mobile>
       </MenuWrapper.Container>
-      
     </MenuWrapper>
   );
 }
@@ -81,4 +80,5 @@ export default function ProfileMenu({ mode, toggleMode }) {
 ProfileMenu.propTypes = {
   mode: PropTypes.string.isRequired,
   toggleMode: PropTypes.func.isRequired,
+  onPlusClick: PropTypes.func.isRequired,
 };

@@ -38,7 +38,9 @@ const LockScroll = createGlobalStyle`
   }
 `;
 
-function Modal({ isOpen, onClose, children }) {
+function Modal({
+  isOpen, onClose, children, center,
+}) {
   return (
     <ModalWrapper
       isOpen={isOpen}
@@ -56,7 +58,14 @@ function Modal({ isOpen, onClose, children }) {
           display: 'flex',
           flex: 1,
         }}
-        variants={{
+        variants={center ? {
+          open: {
+            y: 0,
+          },
+          closed: {
+            y: '100%',
+          },
+        } : {
           open: {
             x: 0,
           },
@@ -79,6 +88,11 @@ Modal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   children: PropTypes.func.isRequired,
+  center: PropTypes.bool,
+};
+
+Modal.defaultProps = {
+  center: false,
 };
 
 export default Modal;

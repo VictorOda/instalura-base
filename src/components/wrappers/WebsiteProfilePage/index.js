@@ -4,11 +4,11 @@ import get from 'lodash/get';
 import PropTypes from 'prop-types';
 import { Box } from '../../foundation/layout/Box';
 import { useDarkMode } from '../../../theme/utils/themeMode';
-// import Modal from '../../commons/Modal';
-// import FormCadastro from '../../patterns/FormCadastro';
+import Modal from '../../commons/Modal';
 import { SEO } from '../../commons/SEO';
 import { WebsiteProfilePageContext } from './context';
 import ProfileMenu from '../../commons/ProfileMenu';
+import FormFeed from '../../patterns/FormFeed';
 
 export { WebsiteProfilePageContext } from './context';
 
@@ -38,16 +38,20 @@ export default function WebsiteProfilePageWrapper({
         justifyContent="space-between"
         backgroundColor={mode === 'main' ? '#F2F2F2' : '#030506'}
       >
-        {/* <Modal isOpen={isModalOpen} onClose={() => setModalState(false)}>
+        <Modal isOpen={isModalOpen} onClose={() => setModalState(false)} center>
           {(propsDoModal) => (
-            <FormCadastro propsDoModal={propsDoModal} />
+            <FormFeed propsDoModal={propsDoModal} onClose={() => setModalState(false)} />
           )}
-        </Modal> */}
+        </Modal>
 
         {menuProps.display && (
           <ProfileMenu
             mode={mode}
             toggleMode={toggleMode}
+            onPlusClick={() => {
+              console.log('click');
+              setModalState(true);
+            }}
           />
         )}
 

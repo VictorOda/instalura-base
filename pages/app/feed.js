@@ -67,7 +67,7 @@ function FeedPage({ user, posts }) {
         ))}
 
       </FeedContainer>
-      <ProjectsContainer>Test 2</ProjectsContainer>
+      <ProjectsContainer />
     </ProfileContainer>
   );
 }
