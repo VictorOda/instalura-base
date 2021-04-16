@@ -30,36 +30,42 @@ export default function FilterCarousel({ imageUrl }) {
       ]}
     >
       <FilterOption>
-        <FilterImage src={imageUrl} alt="Filter 1" />
+        <figure className="filter-normal">
+          <FilterImage src={imageUrl} alt="Normal" />
+        </figure>
         <Text
           variant="paragraph1"
           tag="span"
           color="tertiaryLight"
           textAlign="center"
         >
-          Filter 1
+          Normal
         </Text>
       </FilterOption>
       <FilterOption>
-        <FilterImage src={imageUrl} alt="Filter 2" />
+        <figure className="filter-inkwell">
+          <FilterImage src={imageUrl} alt="Inkwell" />
+        </figure>
         <Text
           variant="paragraph1"
           tag="span"
           color="tertiaryLight"
           textAlign="center"
         >
-          Filter 2
+          Inkwell
         </Text>
       </FilterOption>
       <FilterOption>
-        <FilterImage src={imageUrl} alt="Filter 2" />
+        <figure className="filter-kelvin">
+          <FilterImage src={imageUrl} alt="Kelvin" />
+        </figure>
         <Text
           variant="paragraph1"
           tag="span"
           color="tertiaryLight"
           textAlign="center"
         >
-          Filter 3
+          Kelvin
         </Text>
       </FilterOption>
     </Carousel>

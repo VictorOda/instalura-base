@@ -92,7 +92,7 @@ function FormContent({ onClose }) {
         borderRadius="12px"
       >
         <Button ghost variant="secondary" padding="8px 8px" onClick={onClose}>
-          <img src="/icons/close.svg" alt="Plus Icon" />
+          <img className="filter-1877" src="/icons/close.svg" alt="Plus Icon" />
         </Button>
       </Box>
       {postImage.length === 0 ? (
