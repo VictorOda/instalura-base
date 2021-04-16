@@ -1,5 +1,6 @@
 import { Lottie } from '@crello/react-lottie';
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import { Button } from '../../commons/Button';
 import TextField from '../../forms/TextField';
 import { Box } from '../../foundation/layout/Box';
@@ -7,6 +8,7 @@ import { Grid } from '../../foundation/layout/Grid';
 import Text from '../../foundation/Text';
 import successAnim from '../../../lotties/success-alert.json';
 import errorAnim from '../../../lotties/error-alert.json';
+import { Carousel } from '../../commons/Carousel';
 
 const formStates = {
   DEFAULT: 'DEFAULT',
@@ -16,10 +18,16 @@ const formStates = {
   ERROR: 'ERROR',
 };
 
-// eslint-disable-next-line no-unused-vars
+const PostImage = styled.img`
+  width: 100%;
+  height: auto;
+`;
+
+// eslint-disable-next-line react/prop-types
 function FormContent({ onClose }) {
   const [isFormSubmitted, setFormSubmitted] = useState(false);
   const [submissionStatus, setSubmissionStatus] = useState(formStates.DEFAULT);
+  const [postImage, setPostImage] = useState('');
   const [postInfo, setPostInfo] = useState({
     url: '',
     filter: '',
@@ -32,6 +40,11 @@ function FormContent({ onClose }) {
       [fieldName]: event.target.value,
     });
     console.log('postInfo', postInfo);
+  }
+
+  function loadImage() {
+    setPostImage(postInfo.url);
+    setSubmissionStatus(formStates.FILTER);
   }
 
   const isFormInvalid = postInfo.url.length === 0;
@@ -76,34 +89,82 @@ function FormContent({ onClose }) {
       <Box
         display="flex"
         justifyContent="flex-end"
+        borderRadius="12px"
       >
-        <Button ghost variant="secondary" padding="0 8px" onClick={onClose}>
+        <Button ghost variant="secondary" padding="8px 8px" onClick={onClose}>
           <img src="/icons/close.svg" alt="Plus Icon" />
         </Button>
       </Box>
-      <Box
-        width="100%"
-        height="350px"
-        backgroundColor="#F2F2F2"
-      />
-      {!isFormInvalid && (
-        <img src={postInfo.url} alt="Post" />
+      {postImage.length === 0 ? (
+        <Box
+          width="100%"
+          height="350px"
+          backgroundColor="#F2F2F2"
+        />
+      ) : (
+        <PostImage src={postImage} alt="Post" />
       )}
-      <TextField
-        placeholder="URL"
-        name="url"
-        value={postInfo.url}
-        onChange={handleChange}
-      />
-      <Button
-        variant="primary"
-        fullWidth
-        type="submit"
-        disabled={isFormInvalid}
-      >
-        Avançar
-      </Button>
 
+      {submissionStatus === formStates.DEFAULT ? (
+        <>
+          <Box
+            display="flex"
+            padding="16px"
+            position="relative"
+          >
+            <TextField
+              placeholder="URL"
+              name="url"
+              value={postInfo.url}
+              onChange={handleChange}
+              width="100%"
+            />
+            <Button
+              variant="primary"
+              disabled={isFormInvalid}
+              onClick={loadImage}
+              height="48px"
+              margin="0 0 0 8px"
+            >
+              <img src="/icons/arrow.svg" alt="Arrow Icon" />
+            </Button>
+          </Box>
+          <Box
+            display="flex"
+            padding="16px"
+            borderRadius="12px"
+          >
+            <Button
+              variant="primary"
+              type="submit"
+              disabled={isFormInvalid}
+              width="100%"
+            >
+              Avançar
+            </Button>
+          </Box>
+        </>
+      ) : (
+        <>
+          <Box>
+            <Carousel />
+          </Box>
+          <Box
+            display="flex"
+            padding="16px"
+            borderRadius="12px"
+          >
+            <Button
+              variant="primary"
+              type="submit"
+              disabled={isFormInvalid}
+              width="100%"
+            >
+              Postar
+            </Button>
+          </Box>
+        </>
+      )}
     </form>
   );
 }
@@ -130,6 +191,7 @@ export default function FormFeed({ propsDoModal, onClose }) {
           flex={1}
           padding={0}
           backgroundColor="white"
+          borderRadius="12px"
           // eslint-disable-next-line react/jsx-props-no-spreading
           {...propsDoModal}
         >

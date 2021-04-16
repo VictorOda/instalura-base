@@ -3,9 +3,11 @@ import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
 import Text from '../../foundation/Text';
+import { propToStyle } from '../../../theme/utils/propToStyle';
 
 const InputWrapper = styled.div`
   margin-bottom: 17px;
+  ${propToStyle('width')}
 `;
 
 const Input = styled(Text)`
@@ -42,7 +44,8 @@ export default function TextField({
   const isFieldInvalid = hasError && isTouched;
 
   return (
-    <InputWrapper>
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    <InputWrapper {...props}>
       <Input
         type="text"
         placeholder={placeholder}
