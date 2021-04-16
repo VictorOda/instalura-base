@@ -8,7 +8,7 @@ import { Grid } from '../../foundation/layout/Grid';
 import Text from '../../foundation/Text';
 import successAnim from '../../../lotties/success-alert.json';
 import errorAnim from '../../../lotties/error-alert.json';
-import { Carousel } from '../../commons/Carousel';
+import FilterCarousel from '../../commons/Carousel';
 
 const formStates = {
   DEFAULT: 'DEFAULT',
@@ -146,8 +146,12 @@ function FormContent({ onClose }) {
         </>
       ) : (
         <>
-          <Box>
-            <Carousel />
+          <Box
+            display="flex"
+            padding="16px"
+            width="450px"
+          >
+            <FilterCarousel imageUrl={postImage} />
           </Box>
           <Box
             display="flex"
