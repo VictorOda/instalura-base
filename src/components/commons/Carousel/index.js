@@ -7,12 +7,19 @@ import Text from '../../foundation/Text';
 const FilterOption = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 112px;
 `;
 
 const FilterImage = styled.img`
-  height: auto;
+  height: 100%;
   width: 112px;
-  margin: 8px 0;
+`;
+
+const FilterFigure = styled.figure`
+  display: flex;
+  height: min-content;
+  width: min-content;
 `;
 
 // eslint-disable-next-line react/prop-types
@@ -30,9 +37,9 @@ export default function FilterCarousel({ imageUrl }) {
       ]}
     >
       <FilterOption>
-        <figure className="filter-normal">
+        <FilterFigure className="filter-normal">
           <FilterImage src={imageUrl} alt="Normal" />
-        </figure>
+        </FilterFigure>
         <Text
           variant="paragraph1"
           tag="span"
@@ -43,9 +50,9 @@ export default function FilterCarousel({ imageUrl }) {
         </Text>
       </FilterOption>
       <FilterOption>
-        <figure className="filter-inkwell">
+        <FilterFigure className="filter-inkwell">
           <FilterImage src={imageUrl} alt="Inkwell" />
-        </figure>
+        </FilterFigure>
         <Text
           variant="paragraph1"
           tag="span"
@@ -56,9 +63,9 @@ export default function FilterCarousel({ imageUrl }) {
         </Text>
       </FilterOption>
       <FilterOption>
-        <figure className="filter-kelvin">
+        <FilterFigure className="filter-kelvin">
           <FilterImage src={imageUrl} alt="Kelvin" />
-        </figure>
+        </FilterFigure>
         <Text
           variant="paragraph1"
           tag="span"
@@ -69,9 +76,9 @@ export default function FilterCarousel({ imageUrl }) {
         </Text>
       </FilterOption>
       <FilterOption>
-        <figure className="filter-maven">
+        <FilterFigure className="filter-maven">
           <FilterImage src={imageUrl} alt="Maven" />
-        </figure>
+        </FilterFigure>
         <Text
           variant="paragraph1"
           tag="span"
@@ -82,9 +89,9 @@ export default function FilterCarousel({ imageUrl }) {
         </Text>
       </FilterOption>
       <FilterOption>
-        <figure className="filter-xpro-ii">
+        <FilterFigure className="filter-xpro-ii">
           <FilterImage src={imageUrl} alt="X-Pro II" />
-        </figure>
+        </FilterFigure>
         <Text
           variant="paragraph1"
           tag="span"
