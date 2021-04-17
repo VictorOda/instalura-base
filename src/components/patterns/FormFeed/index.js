@@ -125,6 +125,7 @@ function FormContent({ onClose }) {
               value={postInfo.url}
               onChange={handleChange}
               width="100%"
+              padding="12px 90px 12px 16px"
             />
             <Button
               variant="primary"
@@ -158,8 +159,8 @@ function FormContent({ onClose }) {
         <>
           <Box
             display="flex"
-            padding="16px"
-            width="450px"
+            padding="0"
+            width="500px"
           >
             <FilterCarousel imageUrl={postImage} />
           </Box>
