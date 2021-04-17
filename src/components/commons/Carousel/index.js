@@ -68,6 +68,32 @@ export default function FilterCarousel({ imageUrl }) {
           Kelvin
         </Text>
       </FilterOption>
+      <FilterOption>
+        <figure className="filter-maven">
+          <FilterImage src={imageUrl} alt="Maven" />
+        </figure>
+        <Text
+          variant="paragraph1"
+          tag="span"
+          color="tertiaryLight"
+          textAlign="center"
+        >
+          Maven
+        </Text>
+      </FilterOption>
+      <FilterOption>
+        <figure className="filter-xpro-ii">
+          <FilterImage src={imageUrl} alt="X-Pro II" />
+        </figure>
+        <Text
+          variant="paragraph1"
+          tag="span"
+          color="tertiaryLight"
+          textAlign="center"
+        >
+          X-Pro II
+        </Text>
+      </FilterOption>
     </Carousel>
   );
 }
