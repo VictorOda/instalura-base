@@ -208,6 +208,10 @@ export default function FormFeed({ propsDoModal, onClose }) {
             xs: '100vh',
             md: 'auto',
           }}
+          minWidth={{
+            xs: '100%',
+            md: '500px',
+          }}
           maxWidth={{
             xs: '100%',
             md: '500px',
