@@ -18,6 +18,13 @@ const formStates = {
   ERROR: 'ERROR',
 };
 
+const FormWrapper = styled.form`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
 const PostImage = styled.img`
   width: 100%;
   height: auto;
@@ -50,7 +57,7 @@ function FormContent({ onClose }) {
   const isFormInvalid = postInfo.url.length === 0;
 
   return (
-    <form onSubmit={(event) => {
+    <FormWrapper onSubmit={(event) => {
       event.preventDefault();
       setFormSubmitted(true);
 
@@ -123,8 +130,11 @@ function FormContent({ onClose }) {
               variant="primary"
               disabled={isFormInvalid}
               onClick={loadImage}
-              height="48px"
+              height="46px"
               margin="0 0 0 8px"
+              position="absolute"
+              right="16px"
+              borderRadius="0 12px 12px 0"
             >
               <img src="/icons/arrow.svg" alt="Arrow Icon" />
             </Button>
@@ -169,7 +179,7 @@ function FormContent({ onClose }) {
           </Box>
         </>
       )}
-    </form>
+    </FormWrapper>
   );
 }
 
@@ -191,11 +201,21 @@ export default function FormFeed({ propsDoModal, onClose }) {
           boxShadow="-10px 0px 24px rgba(7, 12, 14, 0.1)"
           display="flex"
           flexDirection="column"
-          justifyContent="center"
           flex={1}
           padding={0}
           backgroundColor="white"
-          borderRadius="12px"
+          height={{
+            xs: '100vh',
+            md: 'auto',
+          }}
+          maxWidth={{
+            xs: '100%',
+            md: '500px',
+          }}
+          borderRadius={{
+            xs: '0',
+            md: '12px',
+          }}
           // eslint-disable-next-line react/jsx-props-no-spreading
           {...propsDoModal}
         >

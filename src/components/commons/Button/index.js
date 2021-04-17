@@ -56,7 +56,8 @@ const ButtonWrapper = styled.button`
   ${propToStyle('height')}
   ${propToStyle('width')}
   ${propToStyle('position')}
-  ${propToStyle('left')}
+  ${propToStyle('right')}
+  ${propToStyle('borderRadius')}
 `;
 
 export function Button({ href, children, ...props }) {

@@ -17,6 +17,7 @@ export const Box = styled.div`
   ${propToStyle('position')}
 
   ${propToStyle('width')}
+  ${propToStyle('maxWidth')}
   ${propToStyle('height')}
   ${propToStyle('listStyle')}
   ${propToStyle('margin')}
