@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import { Lottie } from '@crello/react-lottie';
 import React, { useState } from 'react';
 import styled from 'styled-components';
@@ -5,7 +6,6 @@ import { Button } from '../../commons/Button';
 import TextField from '../../forms/TextField';
 import { Box } from '../../foundation/layout/Box';
 import { Grid } from '../../foundation/layout/Grid';
-import Text from '../../foundation/Text';
 import successAnim from '../../../lotties/success-alert.json';
 import errorAnim from '../../../lotties/error-alert.json';
 import FilterCarousel from '../../commons/Carousel';
@@ -13,7 +13,6 @@ import FilterCarousel from '../../commons/Carousel';
 const formStates = {
   DEFAULT: 'DEFAULT',
   FILTER: 'FILTER',
-  LOADING: 'LOADING',
   DONE: 'DONE',
   ERROR: 'ERROR',
 };
@@ -32,75 +31,83 @@ const PostImage = styled.img`
 
 // eslint-disable-next-line react/prop-types
 function FormContent({ onClose }) {
-  const [isFormSubmitted, setFormSubmitted] = useState(false);
   const [submissionStatus, setSubmissionStatus] = useState(formStates.DEFAULT);
   const [postImage, setPostImage] = useState('');
-  const [postInfo, setPostInfo] = useState({
-    url: '',
-    filter: '',
-  });
+  const [postUrl, setPostUrl] = useState('');
   const [filterOption, setFilterOption] = useState(0);
   const filters = ['normal', 'inkwell', 'kelvin', 'maven', 'xpro-ii'];
 
   function handleChange(event) {
-    const fieldName = event.target.getAttribute('name');
-    setPostInfo({
-      ...postInfo,
-      [fieldName]: event.target.value,
-    });
-    console.log('postInfo', postInfo);
+    setPostUrl(event.target.value);
   }
 
   function loadImage() {
-    setPostImage(postInfo.url);
+    setPostImage(postUrl);
+  }
+
+  function chooseFilter() {
+    console.log('CHOOSE FILTER');
     setSubmissionStatus(formStates.FILTER);
   }
 
-  const isFormInvalid = postInfo.url.length === 0;
+  function resetForm() {
+    setSubmissionStatus(formStates.DEFAULT);
+    setPostImage('');
+    setPostUrl('');
+    setFilterOption(0);
+  }
+
+  function postOnClose() {
+    resetForm();
+    onClose();
+  }
+
+  function submitPost() {
+    console.log('SENDING POST');
+    // Data Transfer Object
+    const postDTO = {
+      photoUrl: postUrl,
+      description: '',
+      filter: `filter-${filters[filterOption]}`,
+    };
+
+    fetch('https://instalura-api.vercel.app/api/posts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(postDTO),
+    })
+      .then((respostaDoServidor) => {
+        if (respostaDoServidor.ok) {
+          return respostaDoServidor.json();
+        }
+        throw new Error('Não foi possível criar o post agora =/');
+      })
+      .then((respostaConvertidaEmObjeto) => {
+        setSubmissionStatus(formStates.DONE);
+        console.log(respostaConvertidaEmObjeto);
+      })
+      .catch((error) => {
+        setSubmissionStatus(formStates.ERROR);
+        console.error(error);
+      })
+      .finally(() => {
+        console.log('finally');
+      });
+  }
+
+  const isFormInvalid = postUrl.length === 0;
+  const isImageNotLoaded = postImage.length === 0;
 
   return (
-    <FormWrapper onSubmit={(event) => {
-      event.preventDefault();
-      setFormSubmitted(true);
-
-      // Data Transfer Object
-      const postDTO = {
-        url: postInfo.url,
-        filter: postInfo.filter,
-      };
-
-      fetch('https://instalura-api.vercel.app/api/users', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(postDTO),
-      })
-        .then((respostaDoServidor) => {
-          if (respostaDoServidor.ok) {
-            return respostaDoServidor.json();
-          }
-          throw new Error('Não foi possível criar o post agora =/');
-        })
-        .then((respostaConvertidaEmObjeto) => {
-          setSubmissionStatus(formStates.DONE);
-          console.log(respostaConvertidaEmObjeto);
-        })
-        .catch((error) => {
-          setSubmissionStatus(formStates.ERROR);
-          console.error(error);
-        })
-        .finally(() => {
-          console.log('finally');
-        });
-    }}
-    >
+    <FormWrapper>
       <Box
         display="flex"
         justifyContent="flex-end"
         borderRadius="12px"
       >
-        <Button ghost variant="secondary" padding="8px 8px" onClick={onClose}>
+        <Button ghost variant="secondary" padding="8px 8px" onClick={postOnClose}>
           <img className="filter-1877" src="/icons/close.svg" alt="Plus Icon" />
         </Button>
       </Box>
@@ -126,7 +133,7 @@ function FormContent({ onClose }) {
             <TextField
               placeholder="URL"
               name="url"
-              value={postInfo.url}
+              value={postUrl}
               onChange={handleChange}
               width="100%"
               padding="12px 90px 12px 16px"
@@ -140,6 +147,7 @@ function FormContent({ onClose }) {
               position="absolute"
               right="16px"
               borderRadius="0 12px 12px 0"
+              type="button"
             >
               <img src="/icons/arrow.svg" alt="Arrow Icon" />
             </Button>
@@ -151,15 +159,16 @@ function FormContent({ onClose }) {
           >
             <Button
               variant="primary"
-              type="submit"
-              disabled={isFormInvalid}
+              disabled={isImageNotLoaded}
               width="100%"
+              onClick={() => chooseFilter()}
+              type="button"
             >
               Avançar
             </Button>
           </Box>
         </>
-      ) : (
+      ) : submissionStatus === formStates.FILTER ? (
         <>
           <Box
             display="flex"
@@ -182,14 +191,40 @@ function FormContent({ onClose }) {
           >
             <Button
               variant="primary"
-              type="submit"
-              disabled={isFormInvalid}
+              type="button"
               width="100%"
+              onClick={submitPost}
             >
               Postar
             </Button>
           </Box>
         </>
+      ) : submissionStatus === formStates.DONE ? (
+        <Box
+          display="flex"
+          justifyContent="center"
+          borderRadius="12px"
+        >
+          <Lottie
+            width="150px"
+            height="150px"
+            className="lottie-container basic"
+            config={{ animationData: successAnim, loop: false, autoplay: true }}
+          />
+        </Box>
+      ) : (
+        <Box
+          display="flex"
+          justifyContent="center"
+          borderRadius="12px"
+        >
+          <Lottie
+            width="150px"
+            height="150px"
+            className="lottie-container basic"
+            config={{ animationData: errorAnim, loop: false, autoplay: true }}
+          />
+        </Box>
       )}
     </FormWrapper>
   );
