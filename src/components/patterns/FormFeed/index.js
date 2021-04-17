@@ -39,6 +39,8 @@ function FormContent({ onClose }) {
     url: '',
     filter: '',
   });
+  const [filterOption, setFilterOption] = useState(0);
+  const filters = ['normal', 'inkwell', 'kelvin', 'maven', 'xpro-ii'];
 
   function handleChange(event) {
     const fieldName = event.target.getAttribute('name');
@@ -109,7 +111,9 @@ function FormContent({ onClose }) {
           backgroundColor="#F2F2F2"
         />
       ) : (
-        <PostImage src={postImage} alt="Post" />
+        <figure className={`filter-${filters[filterOption]}`}>
+          <PostImage src={postImage} alt="Post" />
+        </figure>
       )}
 
       {submissionStatus === formStates.DEFAULT ? (
@@ -165,7 +169,11 @@ function FormContent({ onClose }) {
               md: '500px',
             }}
           >
-            <FilterCarousel imageUrl={postImage} />
+            <FilterCarousel
+              imageUrl={postImage}
+              filterOption={filterOption}
+              setFilterOption={setFilterOption}
+            />
           </Box>
           <Box
             display="flex"

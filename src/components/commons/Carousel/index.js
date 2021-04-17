@@ -23,11 +23,17 @@ const FilterFigure = styled.figure`
 `;
 
 // eslint-disable-next-line react/prop-types
-export default function FilterCarousel({ imageUrl }) {
+export default function FilterCarousel({ imageUrl, filterOption, setFilterOption }) {
+  function onChange(value) {
+    setFilterOption(value);
+  }
+
   return (
     <Carousel
+      value={filterOption}
+      onChange={onChange}
       plugins={[
-        'infinite',
+        'centered',
         {
           resolve: slidesToShowPlugin,
           options: {
