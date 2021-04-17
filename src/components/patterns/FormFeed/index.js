@@ -160,7 +160,10 @@ function FormContent({ onClose }) {
           <Box
             display="flex"
             padding="0"
-            width="500px"
+            width={{
+              xs: '100vw',
+              md: '500px',
+            }}
           >
             <FilterCarousel imageUrl={postImage} />
           </Box>
@@ -191,10 +194,13 @@ export default function FormFeed({ propsDoModal, onClose }) {
       flex={1}
       alignItems="center"
       justifyContent="center"
+      marginLeft={{ xs: '0' }}
+      marginRight={{ xs: '0' }}
     >
       <Grid.Col
         display="flex"
-        paddingRight={{ md: '0' }}
+        paddingLeft={{ xs: '0' }}
+        paddingRight={{ xs: '0' }}
         flex={1}
         value={{ xs: 12, md: 5, lg: 4 }}
       >
@@ -210,11 +216,11 @@ export default function FormFeed({ propsDoModal, onClose }) {
             md: 'auto',
           }}
           minWidth={{
-            xs: '100%',
+            xs: '100vw',
             md: '500px',
           }}
           maxWidth={{
-            xs: '100%',
+            xs: '100vw',
             md: '500px',
           }}
           borderRadius={{

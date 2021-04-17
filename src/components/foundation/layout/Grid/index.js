@@ -148,6 +148,7 @@ const Col = styled.div`
   ${propToStyle('justifyContent')}
   ${propToStyle('flexDirection')}
   ${propToStyle('paddingRight')}
+  ${propToStyle('paddingLeft')}
   ${propToStyle('order')}
 `;
 
