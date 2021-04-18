@@ -84,7 +84,7 @@ FeedPage.defaultProps = {
 
 export default websiteProfilePageHOC(FeedPage, {
   pageWrapperProps: {
-    seoProps: { headTitle: 'Profile' },
+    seoProps: { headTitle: 'Feed' },
   },
 });
 

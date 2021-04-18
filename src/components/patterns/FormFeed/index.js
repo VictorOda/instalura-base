@@ -2,6 +2,7 @@
 import { Lottie } from '@crello/react-lottie';
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { isStagingEnv } from '../../../infra/env/isStagingEnv';
 import { Button } from '../../commons/Button';
 import TextField from '../../forms/TextField';
 import { Box } from '../../foundation/layout/Box';
@@ -9,6 +10,7 @@ import { Grid } from '../../foundation/layout/Grid';
 import successAnim from '../../../lotties/success-alert.json';
 import errorAnim from '../../../lotties/error-alert.json';
 import FilterCarousel from '../../commons/Carousel';
+import { authService } from '../../../services/auth/authService';
 
 const formStates = {
   DEFAULT: 'DEFAULT',
@@ -30,7 +32,7 @@ const PostImage = styled.img`
 `;
 
 // eslint-disable-next-line react/prop-types
-function FormContent({ onClose }) {
+function FormContent({ onClose, context }) {
   const [submissionStatus, setSubmissionStatus] = useState(formStates.DEFAULT);
   const [postImage, setPostImage] = useState('');
   const [postUrl, setPostUrl] = useState('');
@@ -62,8 +64,10 @@ function FormContent({ onClose }) {
     onClose();
   }
 
-  function submitPost() {
+  async function submitPost() {
     console.log('SENDING POST');
+    const token = await authService(context).getToken();
+    console.log('TOKEN', token);
     // Data Transfer Object
     const postDTO = {
       photoUrl: postUrl,
@@ -75,6 +79,7 @@ function FormContent({ onClose }) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(postDTO),
     })
@@ -231,7 +236,7 @@ function FormContent({ onClose }) {
 }
 
 // eslint-disable-next-line react/prop-types
-export default function FormFeed({ propsDoModal, onClose }) {
+export default function FormFeed({ propsDoModal, onClose, context }) {
   return (
     <Grid.Row
       flex={1}
@@ -273,9 +278,17 @@ export default function FormFeed({ propsDoModal, onClose }) {
           // eslint-disable-next-line react/jsx-props-no-spreading
           {...propsDoModal}
         >
-          <FormContent onClose={onClose} />
+          <FormContent onClose={onClose} context={context} />
         </Box>
       </Grid.Col>
     </Grid.Row>
   );
+}
+
+export async function getServerSideProps(ctx) {
+  return {
+    props: {
+      context: ctx,
+    },
+  };
 }

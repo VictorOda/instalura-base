@@ -26,4 +26,20 @@ export const userService = {
       throw new Error('Não conseguimos pegar os posts');
     }
   },
+  async createPost(ctx, bodyJSON) {
+    const url = `${BASE_URL}/api/posts`;
+    try {
+      const token = await authService(ctx).getToken();
+      await HttpClient(url, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+        body: {
+          bodyJSON,
+        },
+      });
+    } catch (err) {
+      throw new Error('Não conseguimos criar o post');
+    }
+  },
 };
