@@ -75,13 +75,17 @@ function FormContent({ onClose, context }) {
       filter: `filter-${filters[filterOption]}`,
     };
 
-    fetch('https://instalura-api.vercel.app/api/posts', {
+    fetch('https://instalura-api-git-master.omariosouto.vercel.app/api/posts', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(postDTO),
+      body: {
+        photoUrl: postDTO.photoUrl,
+        description: postDTO.description,
+        filter: postDTO.filter,
+      },
     })
       .then((respostaDoServidor) => {
         if (respostaDoServidor.ok) {
