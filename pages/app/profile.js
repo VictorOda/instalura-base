@@ -171,7 +171,13 @@ ProfilePage.propTypes = {
 
 ProfilePage.defaultProps = {
   user: {},
-  posts: [],
+  posts: [
+    {
+      _id: '',
+      photoUrl: '',
+      description: '',
+    },
+  ],
 };
 
 export default websiteProfilePageHOC(ProfilePage, {

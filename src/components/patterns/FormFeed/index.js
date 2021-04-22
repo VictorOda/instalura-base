@@ -2,7 +2,6 @@
 import { Lottie } from '@crello/react-lottie';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { isStagingEnv } from '../../../infra/env/isStagingEnv';
 import { Button } from '../../commons/Button';
 import TextField from '../../forms/TextField';
 import { Box } from '../../foundation/layout/Box';
@@ -11,6 +10,7 @@ import successAnim from '../../../lotties/success-alert.json';
 import errorAnim from '../../../lotties/error-alert.json';
 import FilterCarousel from '../../commons/Carousel';
 import { authService } from '../../../services/auth/authService';
+import { userService } from '../../../services/user/userService';
 
 const formStates = {
   DEFAULT: 'DEFAULT',
@@ -64,45 +64,23 @@ function FormContent({ onClose, context }) {
     onClose();
   }
 
-  async function submitPost() {
+  function submitPost() {
     console.log('SENDING POST');
-    const token = await authService(context).getToken();
-    console.log('TOKEN', token);
     // Data Transfer Object
     const postDTO = {
       photoUrl: postUrl,
-      description: '',
+      description: 'Test description',
       filter: `filter-${filters[filterOption]}`,
     };
 
-    fetch('https://instalura-api-git-master.omariosouto.vercel.app/api/posts', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        authorization: `Bearer ${token}`,
-      },
-      body: {
-        photoUrl: postDTO.photoUrl,
-        description: postDTO.description,
-        filter: postDTO.filter,
-      },
-    })
-      .then((respostaDoServidor) => {
-        if (respostaDoServidor.ok) {
-          return respostaDoServidor.json();
-        }
-        throw new Error('Não foi possível criar o post agora =/');
-      })
-      .then((respostaConvertidaEmObjeto) => {
+    userService.createPost(postDTO.description, postDTO.photoUrl, postDTO.filter)
+      .then((response) => {
         setSubmissionStatus(formStates.DONE);
-        console.log(respostaConvertidaEmObjeto);
+        console.log(response);
       })
       .catch((error) => {
         setSubmissionStatus(formStates.ERROR);
         console.error(error);
-      })
-      .finally(() => {
-        console.log('finally');
       });
   }
 

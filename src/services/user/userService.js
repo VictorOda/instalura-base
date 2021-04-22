@@ -3,7 +3,7 @@ import { HttpClient } from '../../infra/http/HttpClient';
 import { authService } from '../auth/authService';
 
 const BASE_URL = isStagingEnv
-  ? 'https://instalura-api-git-master.omariosouto.vercel.app'
+  ? 'https://instalura-api-git-master-omariosouto.vercel.app'
   : 'https://instalura-api.omariosouto.vercel.app';
 
 export const userService = {
@@ -26,16 +26,20 @@ export const userService = {
       throw new Error('Não conseguimos pegar os posts');
     }
   },
-  async createPost(ctx, bodyJSON) {
+  async createPost(description, photoUrl, filter) {
     const url = `${BASE_URL}/api/posts`;
+    console.log(description, photoUrl, filter);
     try {
-      const token = await authService(ctx).getToken();
+      const token = await authService().getToken();
       await HttpClient(url, {
+        method: 'POST',
         headers: {
           authorization: `Bearer ${token}`,
         },
         body: {
-          bodyJSON,
+          description,
+          photoUrl,
+          filter,
         },
       });
     } catch (err) {

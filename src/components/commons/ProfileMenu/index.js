@@ -6,6 +6,7 @@ import { MenuWrapper } from './styles/ProfileMenuWrapper';
 import { LogoMain } from '../../../theme/LogoMain';
 import { LogoDark } from '../../../theme/LogoDark';
 import { Button } from '../Button';
+import { userService } from '../../../services/user/userService';
 
 const Search = styled.div`
   position: relative;
@@ -27,7 +28,14 @@ const SearchBar = styled.input`
   outline: none;
 `;
 
-export default function ProfileMenu({ mode, toggleMode, onPlusClick }) {
+const ProfileIcon = styled.img`
+  border-radius: 50%;
+  height: 48px;
+`;
+
+export default function ProfileMenu({
+  mode, toggleMode, onPlusClick,
+}) {
   return (
     <MenuWrapper>
       <MenuWrapper.Container>
@@ -36,7 +44,7 @@ export default function ProfileMenu({ mode, toggleMode, onPlusClick }) {
         </MenuWrapper.LeftSide>
         <MenuWrapper.RightSide>
           <Search>
-            <SearchIcon src={mode === 'main' ? '/icons/search2.svg' : '/iconsDark/search.svg'} alt="Home Icon" />
+            <SearchIcon src="/icons/search2.svg" alt="Home Icon" />
             <SearchBar type="text" placeholder="Pesquisar" />
           </Search>
           <Button ghost variant="secondary" padding="0 8px" onClick={onPlusClick}>
@@ -60,7 +68,7 @@ export default function ProfileMenu({ mode, toggleMode, onPlusClick }) {
             <img src={mode === 'main' ? '/icons/home.svg' : '/iconsDark/home.svg'} alt="Home Icon" />
           </Button>
           <Button ghost variant="secondary" padding="0">
-            <img src={mode === 'main' ? '/icons/search.svg' : '/iconsDark/search.svg'} alt="Search Icon" />
+            <img src="/icons/search2.svg" alt="Search Icon" />
           </Button>
           <Button ghost variant="secondary" padding="0" onClick={onPlusClick}>
             <img src="/icons/plus.svg" alt="Plus Icon" />
