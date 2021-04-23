@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { get } from 'lodash';
@@ -36,6 +36,15 @@ const ProfileIcon = styled.img`
 export default function ProfileMenu({
   mode, toggleMode, onPlusClick,
 }) {
+  const [userImage, setUserImage] = useState('');
+
+  useEffect(() => {
+    userService.getProfilePage()
+      .then((response) => {
+        setUserImage(response.posts[0].photoUrl);
+      });
+  }, []);
+
   return (
     <MenuWrapper>
       <MenuWrapper.Container>
@@ -50,14 +59,14 @@ export default function ProfileMenu({
           <Button ghost variant="secondary" padding="0 8px" onClick={onPlusClick}>
             <img src="/icons/plus.svg" alt="Plus Icon" />
           </Button>
-          <Button ghost variant="secondary" href="/app/profile" padding="0 8px">
+          <Button ghost variant="secondary" href="/app/feed" padding="0 8px">
             <img src={mode === 'main' ? '/icons/home.svg' : '/iconsDark/home.svg'} alt="Home Icon" />
           </Button>
-          <Button ghost variant="secondary" href="/app/profile" padding="0 8px">
+          <Button ghost variant="secondary" href="#" padding="0 8px">
             <img src={mode === 'main' ? '/icons/heart.svg' : '/iconsDark/heart.svg'} alt="Heart Icon" />
           </Button>
           <Button ghost variant="secondary" href="/app/profile" padding="0 8px">
-            PROFILE
+            <ProfileIcon src={userImage} alt="User" />
           </Button>
           <Button ghost variant="secondary" onClick={toggleMode}>
             Mode
@@ -77,7 +86,7 @@ export default function ProfileMenu({
             <img src={mode === 'main' ? '/icons/heart.svg' : '/iconsDark/heart.svg'} alt="Heart Icon" />
           </Button>
           <Button ghost variant="secondary" href="/app/profile" padding="0">
-            PROFILE
+            <ProfileIcon src={userImage} alt="User" />
           </Button>
         </MenuWrapper.Mobile>
       </MenuWrapper.Container>
