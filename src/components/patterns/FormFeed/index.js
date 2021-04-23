@@ -9,7 +9,6 @@ import { Grid } from '../../foundation/layout/Grid';
 import successAnim from '../../../lotties/success-alert.json';
 import errorAnim from '../../../lotties/error-alert.json';
 import FilterCarousel from '../../commons/Carousel';
-import { authService } from '../../../services/auth/authService';
 import { userService } from '../../../services/user/userService';
 
 const formStates = {
@@ -32,15 +31,20 @@ const PostImage = styled.img`
 `;
 
 // eslint-disable-next-line react/prop-types
-function FormContent({ onClose, context }) {
+function FormContent({ onClose }) {
   const [submissionStatus, setSubmissionStatus] = useState(formStates.DEFAULT);
   const [postImage, setPostImage] = useState('');
   const [postUrl, setPostUrl] = useState('');
   const [filterOption, setFilterOption] = useState(0);
+  const [description, setDescription] = useState('');
   const filters = ['normal', 'inkwell', 'kelvin', 'maven', 'xpro-ii'];
 
   function handleChange(event) {
     setPostUrl(event.target.value);
+  }
+
+  function handleDescriptionChange(event) {
+    setDescription(event.target.value);
   }
 
   function loadImage() {
@@ -69,7 +73,7 @@ function FormContent({ onClose, context }) {
     // Data Transfer Object
     const postDTO = {
       photoUrl: postUrl,
-      description: 'Test description',
+      description,
       filter: `filter-${filters[filterOption]}`,
     };
 
@@ -138,6 +142,20 @@ function FormContent({ onClose, context }) {
             >
               <img src="/icons/arrow.svg" alt="Arrow Icon" />
             </Button>
+          </Box>
+          <Box
+            display="flex"
+            padding="16px"
+            position="relative"
+          >
+            <TextField
+              placeholder="Descrição"
+              name="description"
+              value={description}
+              onChange={handleDescriptionChange}
+              width="100%"
+              padding="12px 90px 12px 16px"
+            />
           </Box>
           <Box
             display="flex"
