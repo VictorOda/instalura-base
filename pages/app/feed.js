@@ -10,7 +10,7 @@ import { breakpointsMedia } from '../../src/theme/utils/breakpointsMedia';
 import Post from '../../src/components/commons/Post';
 
 const ProfileContainer = styled.div` 
-  max-width: 992px;
+  max-width: 512px;
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -42,17 +42,6 @@ const FeedContainer = styled.div`
   })}
 `;
 
-const ProjectsContainer = styled.div`
-  flex-grow: 1;
-  display: none;
-
-  ${breakpointsMedia({
-    md: css`
-      display: flex;
-    `,
-  })}
-`;
-
 function FeedPage({ user, posts }) {
   return (
     <ProfileContainer>
@@ -63,11 +52,11 @@ function FeedPage({ user, posts }) {
             username={user.username}
             userPhoto={posts[0].photoUrl}
             photoUrl={post.photoUrl}
+            description={post.description}
           />
         ))}
 
       </FeedContainer>
-      <ProjectsContainer />
     </ProfileContainer>
   );
 }

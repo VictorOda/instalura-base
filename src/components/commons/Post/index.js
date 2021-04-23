@@ -30,7 +30,9 @@ const PostPhoto = styled.img`
   width: 100%;
 `;
 
-export default function Post({ username, userPhoto, photoUrl }) {
+export default function Post({
+  username, userPhoto, photoUrl, description,
+}) {
   return (
     <PostWrapper>
       {/* Header */}
@@ -110,7 +112,14 @@ export default function Post({ username, userPhoto, photoUrl }) {
         <img src="/icons/bookmark.svg" alt="Bookmark Icon" />
       </Box>
       {/* Comments */}
-      {/* TODO */}
+      <Text
+        variant="paragraph1"
+        tag="p"
+        color="icons"
+        padding="16px 32px"
+      >
+        {description}
+      </Text>
     </PostWrapper>
   );
 }
@@ -119,4 +128,5 @@ Post.propTypes = {
   username: PropTypes.string.isRequired,
   userPhoto: PropTypes.string.isRequired,
   photoUrl: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
 };
