@@ -14,6 +14,7 @@ export const MenuWrapper = styled.nav`
   background-color: ${(props) => get(props.theme, `colors.background.${props.theme.mode}.color`)};
   border-radius: 24px 24px 0px 0px;
   width: 100%;
+  z-index: 999;
 
   ${breakpointsMedia({
     sm: css`
