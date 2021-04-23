@@ -46,4 +46,18 @@ export const userService = {
       throw new Error('Não conseguimos criar o post');
     }
   },
+  async likePost(postId) {
+    const url = `${BASE_URL}/api/posts/${postId}/like`;
+    try {
+      const token = await authService().getToken();
+      await HttpClient(url, {
+        method: 'POST',
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      });
+    } catch (err) {
+      throw new Error('Não conseguimos dar o like no post');
+    }
+  },
 };

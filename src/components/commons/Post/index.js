@@ -1,10 +1,13 @@
-import React from 'react';
+/* eslint-disable react/forbid-prop-types */
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { get } from 'lodash';
 import { Box } from '../../foundation/layout/Box';
 import Text from '../../foundation/Text';
 import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
+import { userService } from '../../../services/user/userService';
+import { Button } from '../Button';
 
 const PostWrapper = styled.div`
   width: 100%;
@@ -31,8 +34,37 @@ const PostPhoto = styled.img`
 `;
 
 export default function Post({
-  username, userPhoto, photoUrl, description,
+  username, userPhoto, userId, photoUrl, description, id, likes,
 }) {
+  const [numLikes, setNumLikes] = useState(likes.length);
+  const [isLiked, setIsLiked] = useState(false);
+
+  useEffect(() => {
+    likes.forEach((like) => {
+      if (like.user === userId) {
+        setIsLiked(true);
+      }
+    });
+  }, []);
+
+  function handleLike() {
+    userService.likePost(id)
+      .then((response) => {
+        console.log(response);
+        if (isLiked) {
+          setNumLikes(numLikes - 1);
+        } else {
+          setNumLikes(numLikes + 1);
+        }
+        setIsLiked(!isLiked);
+      })
+      .catch(() => {
+        setNumLikes(numLikes - 1);
+        setIsLiked(false);
+        // console.error(error);
+      });
+  }
+
   return (
     <PostWrapper>
       {/* Header */}
@@ -76,14 +108,20 @@ export default function Post({
             display="flex"
             alignItems="center"
           >
-            <img src="/icons/heart.svg" alt="Heart Icon" />
+            <Button
+              ghost
+              padding="0"
+              onClick={() => handleLike()}
+            >
+              <img src={isLiked ? '/icons/heartFilled.svg' : '/icons/heart.svg'} alt="Heart Icon" />
+            </Button>
             <Text
               variant="subTitle"
               tag="span"
               color="icons"
               marginLeft="4px"
             >
-              5.2k
+              {numLikes}
             </Text>
           </Box>
           <Box
@@ -116,7 +154,7 @@ export default function Post({
         variant="paragraph1"
         tag="p"
         color="icons"
-        padding="16px 32px"
+        padding="8px 32px"
       >
         {description}
       </Text>
@@ -127,6 +165,9 @@ export default function Post({
 Post.propTypes = {
   username: PropTypes.string.isRequired,
   userPhoto: PropTypes.string.isRequired,
+  userId: PropTypes.string.isRequired,
   photoUrl: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  likes: PropTypes.array.isRequired,
 };

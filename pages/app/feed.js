@@ -50,9 +50,12 @@ function FeedPage({ user, posts }) {
           <Post
             key={post._id}
             username={user.username}
+            userId={user.id}
             userPhoto={posts[0].photoUrl}
             photoUrl={post.photoUrl}
             description={post.description}
+            likes={post.likes}
+            id={post._id}
           />
         ))}
 
