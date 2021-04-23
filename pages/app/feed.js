@@ -56,6 +56,7 @@ function FeedPage({ user, posts }) {
             description={post.description}
             likes={post.likes}
             id={post._id}
+            filter={post.filter}
           />
         ))}
 

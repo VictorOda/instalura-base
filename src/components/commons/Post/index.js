@@ -33,8 +33,15 @@ const PostPhoto = styled.img`
   width: 100%;
 `;
 
+const PostFigure = styled.figure`
+  width: 100%;
+  z-index: 0;
+  margin: 0;
+  padding: 0;
+`;
+
 export default function Post({
-  username, userPhoto, userId, photoUrl, description, id, likes,
+  username, userPhoto, userId, photoUrl, description, id, likes, filter
 }) {
   const [numLikes, setNumLikes] = useState(likes.length);
   const [isLiked, setIsLiked] = useState(false);
@@ -90,7 +97,9 @@ export default function Post({
         <img src="/icons/more.svg" alt="More Icon" />
       </Box>
       {/* Photo */}
-      <PostPhoto src={photoUrl} alt="Post" />
+      <PostFigure className={filter}>
+        <PostPhoto loading="lazy" src={photoUrl} alt="Post" />
+      </PostFigure>
       {/* Buttons */}
       <Box
         display="flex"
@@ -170,4 +179,5 @@ Post.propTypes = {
   description: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   likes: PropTypes.array.isRequired,
+  filter: PropTypes.string.isRequired,
 };
