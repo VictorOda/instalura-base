@@ -56,7 +56,7 @@ function FeedPage({ user, posts }) {
             description={post.description}
             likes={post.likes}
             id={post._id}
-            filter={post.filter}
+            filter={post.filter || 'filter-normal'}
           />
         ))}
 
@@ -94,7 +94,7 @@ export async function getServerSideProps(ctx) {
           ...session,
           ...profilePage.user,
         },
-        posts: profilePage.posts,
+        posts: profilePage.posts.reverse(),
       },
     };
   }

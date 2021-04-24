@@ -95,7 +95,7 @@ function ProfilePage({ user, posts }) {
   return (
     <ProfileContainer>
       <InfoContainer>
-        <ProfileIcon src={posts[0].photoUrl} alt="Profile Icon" />
+        <ProfileIcon src={posts[posts.length - 1].photoUrl} alt="Profile Icon" />
         <ProfileInfo>
           <Text
             variant="subTitle"
@@ -157,7 +157,7 @@ function ProfilePage({ user, posts }) {
             tag="span"
             color="tertiaryLight"
           >
-            A whosome person responsible for the best movies ever.
+            A wholesome person responsible for the best movies ever.
           </Text>
         </ProfileInfo>
       </InfoContainer>
@@ -207,7 +207,7 @@ export async function getServerSideProps(ctx) {
           ...session,
           ...profilePage.user,
         },
-        posts: profilePage.posts,
+        posts: profilePage.posts.reverse(),
       },
     };
   }
