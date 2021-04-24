@@ -51,7 +51,7 @@ function FeedPage({ user, posts }) {
             key={post._id}
             username={user.username}
             userId={user.id}
-            userPhoto={posts[0].photoUrl}
+            userPhoto={posts[posts.length - 1].photoUrl}
             photoUrl={post.photoUrl}
             description={post.description}
             likes={post.likes}
