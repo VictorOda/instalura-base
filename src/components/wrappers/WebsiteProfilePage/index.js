@@ -40,7 +40,11 @@ export default function WebsiteProfilePageWrapper({
       >
         <Modal isOpen={isModalOpen} onClose={() => setModalState(false)} center>
           {(propsDoModal) => (
-            <FormFeed propsDoModal={propsDoModal} onClose={() => setModalState(false)} />
+            <FormFeed
+              propsDoModal={propsDoModal}
+              onClose={() => setModalState(false)}
+              isOpen={isModalOpen}
+            />
           )}
         </Modal>
 
@@ -49,7 +53,6 @@ export default function WebsiteProfilePageWrapper({
             mode={mode}
             toggleMode={toggleMode}
             onPlusClick={() => {
-              console.log('click');
               setModalState(true);
             }}
           />

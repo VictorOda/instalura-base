@@ -47,7 +47,7 @@ const PostImage = styled.img`
 `;
 
 // eslint-disable-next-line react/prop-types
-function FormContent({ onClose }) {
+function FormContent({ onClose, isOpen }) {
   const [submissionStatus, setSubmissionStatus] = useState(formStates.DEFAULT);
   const [postImage, setPostImage] = useState('');
   const [postUrl, setPostUrl] = useState('');
@@ -76,6 +76,7 @@ function FormContent({ onClose }) {
     setSubmissionStatus(formStates.DEFAULT);
     setPostImage('');
     setPostUrl('');
+    setDescription('');
     setFilterOption(0);
   }
 
@@ -96,16 +97,27 @@ function FormContent({ onClose }) {
     userService.createPost(postDTO.description, postDTO.photoUrl, postDTO.filter)
       .then((response) => {
         setSubmissionStatus(formStates.DONE);
+        setPostImage('');
+        setPostUrl('');
+        setDescription('');
         console.log(response);
       })
       .catch((error) => {
         setSubmissionStatus(formStates.ERROR);
+        setPostImage('');
+        setPostUrl('');
+        setDescription('');
         console.error(error);
       });
   }
 
   const isFormInvalid = postUrl.length === 0;
   const isImageNotLoaded = postImage.length === 0;
+  if (!isOpen
+      && (submissionStatus !== formStates.DEFAULT
+        || postImage.length > 0 || postUrl.length > 0 || description.length > 0)) {
+    resetForm();
+  }
 
   return (
     <FormWrapper>
@@ -258,8 +270,10 @@ function FormContent({ onClose }) {
   );
 }
 
-// eslint-disable-next-line react/prop-types
-export default function FormFeed({ propsDoModal, onClose, context }) {
+export default function FormFeed({
+  // eslint-disable-next-line react/prop-types
+  propsDoModal, onClose, context, isOpen,
+}) {
   return (
     <Grid.Row
       flex={1}
@@ -302,7 +316,7 @@ export default function FormFeed({ propsDoModal, onClose, context }) {
           // eslint-disable-next-line react/jsx-props-no-spreading
           {...propsDoModal}
         >
-          <FormContent onClose={onClose} context={context} />
+          <FormContent onClose={onClose} context={context} isOpen={isOpen} />
         </Box>
       </Grid.Col>
     </Grid.Row>
