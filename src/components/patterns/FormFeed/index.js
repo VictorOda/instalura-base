@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import { Lottie } from '@crello/react-lottie';
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Button } from '../../commons/Button';
 import TextField from '../../forms/TextField';
 import { Box } from '../../foundation/layout/Box';
@@ -10,6 +10,7 @@ import successAnim from '../../../lotties/success-alert.json';
 import errorAnim from '../../../lotties/error-alert.json';
 import FilterCarousel from '../../commons/Carousel';
 import { userService } from '../../../services/user/userService';
+import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
 
 const formStates = {
   DEFAULT: 'DEFAULT',
@@ -23,6 +24,16 @@ const FormWrapper = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  
+  ${breakpointsMedia({
+    xs: css`
+      padding-bottom: 64px;
+    `,
+    md: css`
+      padding-bottom: 0;
+    `,
+  })}
+
 `;
 
 const PostFigure = styled.figure`
@@ -256,6 +267,7 @@ export default function FormFeed({ propsDoModal, onClose, context }) {
       justifyContent="center"
       marginLeft={{ xs: '0' }}
       marginRight={{ xs: '0' }}
+      zIndex="1000"
     >
       <Grid.Col
         display="flex"

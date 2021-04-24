@@ -47,9 +47,11 @@ const Row = styled.div`
     ${propToStyle('marginLeft')}
     ${propToStyle('marginRight')}
     ${propToStyle('marginBottom')}
+    ${propToStyle('paddingBottom')}
     ${propToStyle('justifyContent')}
     ${propToStyle('flexDirection')}
     ${propToStyle('alignItems')}
+    ${propToStyle('position')}
 
     h1 {
       color: ${(props) => get(props.theme, `colors.tertiaryMain.${props.theme.mode}.contrastText`)};
