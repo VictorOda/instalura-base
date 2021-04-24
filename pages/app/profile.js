@@ -3,6 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
+import LazyLoad from 'react-lazyload';
 import websiteProfilePageHOC from '../../src/components/wrappers/WebsiteProfilePage/hoc';
 import { authService } from '../../src/services/auth/authService';
 import { userService } from '../../src/services/user/userService';
@@ -42,6 +43,7 @@ const GridContainer = styled.div`
 
 const PostContainer = styled.div`
   width: 100%;
+  height: 320px;
 `;
 
 const Post = styled.img`
@@ -163,9 +165,11 @@ function ProfilePage({ user, posts }) {
       </InfoContainer>
       <GridContainer>
         {posts.map((post) => (
-          <PostContainer key={post._id}>
-            <Post src={post.photoUrl} alt={post.description} />
-          </PostContainer>
+          <LazyLoad height={320} offset={100} key={post._id}>
+            <PostContainer>
+              <Post src={post.photoUrl} alt={post.description} />
+            </PostContainer>
+          </LazyLoad>
         ))}
       </GridContainer>
     </ProfileContainer>
