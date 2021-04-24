@@ -56,7 +56,7 @@ export default function ProfileMenu({
             <SearchIcon src="/icons/search2.svg" alt="Home Icon" />
             <SearchBar type="text" placeholder="Pesquisar" />
           </Search>
-          <Button ghost variant="secondary" padding="0 8px" onClick={onPlusClick}>
+          <Button ghost variant="secondary" padding="0 8px" onClick={onPlusClick} id="plusButton">
             <img src="/icons/plus.svg" alt="Plus Icon" />
           </Button>
           <Button ghost variant="secondary" href="/app/feed" padding="0 8px">

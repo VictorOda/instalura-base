@@ -128,6 +128,7 @@ function FormContent({ onClose }) {
               onChange={handleChange}
               width="100%"
               padding="12px 90px 12px 16px"
+              id="postUrl"
             />
             <Button
               variant="primary"
@@ -139,6 +140,7 @@ function FormContent({ onClose }) {
               right="16px"
               borderRadius="0 12px 12px 0"
               type="button"
+              id="loadImageButton"
             >
               <img src="/icons/arrow.svg" alt="Arrow Icon" />
             </Button>
@@ -155,12 +157,14 @@ function FormContent({ onClose }) {
               onChange={handleDescriptionChange}
               width="100%"
               padding="12px 90px 12px 16px"
+              id="postDescription"
             />
           </Box>
           <Box
             display="flex"
             padding="16px"
             borderRadius="12px"
+            id="avançar"
           >
             <Button
               variant="primary"
@@ -193,6 +197,7 @@ function FormContent({ onClose }) {
             display="flex"
             padding="16px"
             borderRadius="12px"
+            id="submitBox"
           >
             <Button
               variant="primary"
@@ -209,6 +214,7 @@ function FormContent({ onClose }) {
           display="flex"
           justifyContent="center"
           borderRadius="12px"
+          id="lottieSuccess"
         >
           <Lottie
             width="150px"
@@ -222,6 +228,7 @@ function FormContent({ onClose }) {
           display="flex"
           justifyContent="center"
           borderRadius="12px"
+          id="lottieError"
         >
           <Lottie
             width="150px"
