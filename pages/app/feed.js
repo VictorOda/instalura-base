@@ -34,7 +34,7 @@ const FeedContainer = styled.div`
   
   ${breakpointsMedia({
     xs: css`
-      padding: 0;
+      padding: 24px 0;
     `,
     md: css`
       padding: 16px;

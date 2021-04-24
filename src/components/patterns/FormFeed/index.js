@@ -25,6 +25,11 @@ const FormWrapper = styled.form`
   justify-content: space-between;
 `;
 
+const PostFigure = styled.figure`
+  margin: 0;
+  display: flex;
+`;
+
 const PostImage = styled.img`
   width: 100%;
   height: auto;
@@ -109,16 +114,16 @@ function FormContent({ onClose }) {
           backgroundColor="#F2F2F2"
         />
       ) : (
-        <figure className={`filter-${filters[filterOption]}`}>
+        <PostFigure className={`filter-${filters[filterOption]}`}>
           <PostImage src={postImage} alt="Post" />
-        </figure>
+        </PostFigure>
       )}
 
       {submissionStatus === formStates.DEFAULT ? (
         <>
           <Box
             display="flex"
-            padding="16px"
+            padding="16px 16px 0 16px"
             position="relative"
           >
             <TextField
@@ -147,7 +152,7 @@ function FormContent({ onClose }) {
           </Box>
           <Box
             display="flex"
-            padding="16px"
+            padding="0 16px"
             position="relative"
           >
             <TextField
