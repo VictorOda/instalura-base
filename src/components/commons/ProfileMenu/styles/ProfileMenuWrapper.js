@@ -23,7 +23,7 @@ export const MenuWrapper = styled.nav`
       margin-right: auto;
       
       box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.0);
-      border-radius: 0;
+      border-radius: 12px 12px 0 0;
       padding: 0px 18px;
     `,
     md: css`
