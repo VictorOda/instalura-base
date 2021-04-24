@@ -40,8 +40,14 @@ const GridContainer = styled.div`
   })}
 `;
 
+const PostContainer = styled.div`
+  width: 100%;
+`;
+
 const Post = styled.img`
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 
 const InfoContainer = styled.div`
@@ -157,7 +163,9 @@ function ProfilePage({ user, posts }) {
       </InfoContainer>
       <GridContainer>
         {posts.map((post) => (
-          <Post src={post.photoUrl} key={post._id} alt={post.description} />
+          <PostContainer key={post._id}>
+            <Post src={post.photoUrl} alt={post.description} />
+          </PostContainer>
         ))}
       </GridContainer>
     </ProfileContainer>
