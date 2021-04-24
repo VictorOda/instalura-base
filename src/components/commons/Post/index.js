@@ -41,7 +41,7 @@ const PostFigure = styled.figure`
 `;
 
 export default function Post({
-  username, userPhoto, userId, photoUrl, description, id, likes, filter
+  username, userPhoto, userId, photoUrl, description, id, likes, filter,
 }) {
   const [numLikes, setNumLikes] = useState(likes.length);
   const [isLiked, setIsLiked] = useState(false);

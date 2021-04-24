@@ -3,6 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
+import LazyLoad from 'react-lazyload';
 import websiteProfilePageHOC from '../../src/components/wrappers/WebsiteProfilePage/hoc';
 import { authService } from '../../src/services/auth/authService';
 import { userService } from '../../src/services/user/userService';
@@ -47,17 +48,19 @@ function FeedPage({ user, posts }) {
     <ProfileContainer>
       <FeedContainer>
         {posts.map((post) => (
-          <Post
-            key={post._id}
-            username={user.username}
-            userId={user.id}
-            userPhoto={posts[posts.length - 1].photoUrl}
-            photoUrl={post.photoUrl}
-            description={post.description}
-            likes={post.likes}
-            id={post._id}
-            filter={post.filter || 'filter-normal'}
-          />
+          <LazyLoad height={780} offset={100} key={post._id}>
+            <Post
+              username={user.username}
+              userId={user.id}
+              userPhoto={posts[posts.length - 1].photoUrl}
+              photoUrl={post.photoUrl}
+              description={post.description}
+              likes={post.likes}
+              id={post._id}
+              filter={post.filter || 'filter-normal'}
+            />
+          </LazyLoad>
+
         ))}
 
       </FeedContainer>
