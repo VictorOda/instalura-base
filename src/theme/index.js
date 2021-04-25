@@ -12,12 +12,30 @@ const colors = {
       color: '#030506',
     },
   },
+  posts: {
+    main: {
+      color: '#FFFFFF',
+    },
+    dark: {
+      color: '#070C0E',
+    },
+  },
   borders: {
     main: {
       color: '#F2F2F2',
     },
     dark: {
       color: '#181F22',
+    },
+  },
+  icons: {
+    main: {
+      color: '#000000',
+      highlight: '#D7385E',
+    },
+    dark: {
+      color: '#FFFFFF',
+      highlight: '#D7385E',
     },
   },
   primary: {

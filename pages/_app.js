@@ -2,6 +2,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import Head from 'next/head';
+import '../public/instagram.min.css';
 
 // eslint-disable-next-line react/prop-types
 export default function App({ Component, pageProps }) {

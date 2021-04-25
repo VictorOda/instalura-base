@@ -84,17 +84,3 @@ export default websitePageHOC(HomeScreen, {
     },
   },
 });
-
-// export default function Home() {
-//   return (
-//     <WebsitePageWrapper
-//       seoProps={{ headTitle: 'Home' }}
-//       pageBoxProps={{
-//         backgroundRepeat: 'no-repeat',
-//         backgroundPosition: 'bottom right',
-//       }}
-//     >
-//       <HomeScreen />
-//     </WebsitePageWrapper>
-//   );
-// }

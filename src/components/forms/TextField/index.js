@@ -3,17 +3,19 @@ import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
 import Text from '../../foundation/Text';
+import { propToStyle } from '../../../theme/utils/propToStyle';
 
 const InputWrapper = styled.div`
   margin-bottom: 17px;
+  ${propToStyle('width')}
+  ${propToStyle('padding')}
 `;
 
 const Input = styled(Text)`
   width: 100%;
   border: 1px solid ${({ theme }) => get(theme, `colors.tertiaryLight.${theme.mode}.contrastText`)};
-  padding: 12px 16px;
-  outline: 0;
   border-radius: ${({ theme }) => theme.borderRadius};
+  outline: none;
 
   ${({ theme, isFieldInvalid }) => isFieldInvalid && css`
     border-color: ${get(theme, `colors.error.${theme.mode}.color`)};
@@ -22,6 +24,8 @@ const Input = styled(Text)`
       font-size: 11px;
     }
   `}
+
+  ${propToStyle('padding')}
 `;
 
 Input.defaultProps = {
@@ -36,13 +40,15 @@ export default function TextField({
   value,
   error,
   isTouched,
+  padding,
   ...props
 }) {
   const hasError = Boolean(error);
   const isFieldInvalid = hasError && isTouched;
 
   return (
-    <InputWrapper>
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    <InputWrapper {...props}>
       <Input
         type="text"
         placeholder={placeholder}
@@ -50,6 +56,7 @@ export default function TextField({
         onChange={onChange}
         value={value}
         isFieldInvalid={isFieldInvalid}
+        padding={padding}
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...props}
       />
@@ -70,6 +77,7 @@ export default function TextField({
 TextField.defaultProps = {
   error: '',
   isTouched: false,
+  padding: '12px 16px',
 };
 
 TextField.propTypes = {
@@ -77,6 +85,7 @@ TextField.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
+  padding: PropTypes.string,
   error: PropTypes.string,
   isTouched: PropTypes.bool,
 };

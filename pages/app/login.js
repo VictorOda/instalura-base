@@ -84,10 +84,6 @@ function LoginScreen() {
 export default websitePageHOC(LoginScreen, {
   pageWrapperProps: {
     seoProps: { headTitle: 'Login' },
-    pageBoxProps: {
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'bottom right',
-    },
     menuProps: { display: false },
   },
 });
