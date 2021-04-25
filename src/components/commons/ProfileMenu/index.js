@@ -35,7 +35,7 @@ const ProfileIcon = styled.img`
 `;
 
 export default function ProfileMenu({
-  mode, toggleMode, onPlusClick,
+  mode, onPlusClick,
 }) {
   const [userImage, setUserImage] = useState('');
 
@@ -75,9 +75,9 @@ export default function ProfileMenu({
           >
             <ProfileIcon src={userImage} alt="User" />
           </Link>
-          <Button ghost variant="secondary" onClick={toggleMode}>
+          {/* <Button ghost variant="secondary" onClick={toggleMode}>
             Mode
-          </Button>
+          </Button> */}
         </MenuWrapper.RightSide>
         <MenuWrapper.Mobile>
           <Link
@@ -109,6 +109,5 @@ export default function ProfileMenu({
 
 ProfileMenu.propTypes = {
   mode: PropTypes.string.isRequired,
-  toggleMode: PropTypes.func.isRequired,
   onPlusClick: PropTypes.func.isRequired,
 };

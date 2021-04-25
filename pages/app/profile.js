@@ -89,9 +89,11 @@ const ProfileIcon = styled.img`
   ${breakpointsMedia({
     xs: css`
      height: 128px;
+     margin-right: 100%;
     `,
     md: css`
       height: 196px;
+      margin-right: 32px;
     `,
     lg: css`
       height: 248px;
