@@ -42,8 +42,20 @@ const GridContainer = styled.div`
 `;
 
 const PostContainer = styled.div`
-  width: 100%;
-  height: 320px;
+  ${breakpointsMedia({
+    xs: css`
+      width: 100px;
+      height: 100px;
+    `,
+    md: css`
+      width: 200px;
+      height: 200px;
+    `,
+    lg: css`
+      width: 300px;
+      height: 300px;
+    `,
+  })}
 `;
 
 const Post = styled.img`
