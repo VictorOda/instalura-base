@@ -35,9 +35,30 @@ const PostPhoto = styled.img`
 
 const PostFigure = styled.figure`
   width: 100%;
+  position: relative;
   z-index: 0;
   margin: 0;
   padding: 0;
+`;
+
+const HoverLikeButton = styled.button`
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 4px;
+  opacity: 0;
+  background-color: #ff7a70;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+
+  &:hover {
+    opacity: 0.5;
+  }
+
 `;
 
 export default function Post({
@@ -99,6 +120,9 @@ export default function Post({
       {/* Photo */}
       <PostFigure className={filter}>
         <PostPhoto loading="lazy" src={photoUrl} alt="Post" />
+        <HoverLikeButton onClick={() => handleLike()}>
+          <img src={isLiked ? '/icons/heartFilled.svg' : '/icons/heart.svg'} alt="Heart Icon" width="100px" height="100px" />
+        </HoverLikeButton>
       </PostFigure>
       {/* Buttons */}
       <Box
